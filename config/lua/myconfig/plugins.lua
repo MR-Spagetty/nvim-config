@@ -24,4 +24,27 @@ return require("packer").startup(function(use)
 			vim.cmd.colorscheme("midnight")
 		end,
 	})
+
+	-- LSPs
+	-- These need to be set up first,
+	use({
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup()
+		end,
+	})
+
+	-- Should be set up in lsp.lua
+	use({
+		"williamboman/mason-lspconfig.nvim",
+		"folke/neodev.nvim",
+	})
+
+	-- Then this
+	use({
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("myconfig.config.lsp")
+		end,
+	})
 end)
