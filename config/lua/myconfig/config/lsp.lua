@@ -2,6 +2,9 @@ local lspconfig = require("lspconfig")
 
 local servers = {
   "lua_ls",
+  "clangd",
+  "jdtls",
+  "pyright",
 }
 
 -- {{{ Mason
