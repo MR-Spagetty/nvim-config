@@ -1,4 +1,6 @@
 vim.o.number = true
+vim.o.mapleader = " "
+vim.o.scrolloff = 6
 
 -- Tab stuff
 vim.o.shiftwidth = 2
