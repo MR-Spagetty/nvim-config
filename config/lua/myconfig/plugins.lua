@@ -1,3 +1,4 @@
+-- Function to bind
 return require("packer").startup(function(use)
   -- Packer can manage itself
   use("wbthomason/packer.nvim")
@@ -17,23 +18,28 @@ return require("packer").startup(function(use)
   })
 
   -- {{{ Themes
-  -- Neat very dark theme
-  use({
-    "dasupradyumna/midnight.nvim",
-  })
-  use({
-    "rose-pine/neovim",
-  })
-  use({
-    "rebelot/kanagawa.nvim"
-  })
-  use({
-    "EdenEast/nightfox.nvim"
-  })
+  -- {{{ Theme wrapper function
+  -- This function sets up transparent with transparent_enabled
+  local function usetranstheme(theme, module)
+    use {
+      theme,
+      after = {"xiyaowong/transparent.nvim" },
+      config = function()
+        module.setup ({
+          transparent = vim.g.transparent_enabled,
+        })
+      end
+    }
+  end
+  --- }}}
+
+  usetranstheme("dasupradyumna/midnight.nvim", require("midnight"))
+  usetranstheme("rose-pine/neovim", require("rose-pine"))
+  usetranstheme("rebelot/kanagawa.nvim", require("kanagawa"))
+  usetranstheme("EdenEast/nightfox.nvim", require("nightfox"))
   -- }}}
 
   -- Adds a toggle for transparent background, very nice :)
-  -- It's persistent as well!
   use {
     "xiyaowong/transparent.nvim"
   }
