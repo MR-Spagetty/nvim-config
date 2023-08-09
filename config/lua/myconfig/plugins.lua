@@ -16,14 +16,30 @@ return require("packer").startup(function(use)
     end,
   })
 
+  -- {{{ Themes
   -- Neat very dark theme
   use({
     "dasupradyumna/midnight.nvim",
-    -- Autoload
-    config = function()
-      vim.cmd.colorscheme("midnight")
-    end,
   })
+  use({
+    "rose-pine/neovim",
+  })
+  use({
+    "rebelot/kanagawa.nvim"
+  })
+  use({
+    "EdenEast/nightfox.nvim"
+  })
+  -- }}}
+
+  -- Adds a toggle for transparent background, very nice :)
+  -- It's persistent as well!
+  use {
+    "xiyaowong/transparent.nvim"
+  }
+
+    config = function()
+    end,
 
   use({
     "williamboman/mason.nvim",
