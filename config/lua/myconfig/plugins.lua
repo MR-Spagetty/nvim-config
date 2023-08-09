@@ -35,20 +35,18 @@ return require("packer").startup(function(use)
   -- {{{ LSP
   -- These should be configured in lsp.lua
   use({
-    {
-      "williamboman/mason-lspconfig.nvim",
-      requires = { "williamboman/mason.nvim" },
-    },
-    {
-      "folke/neodev.nvim",
-    },
-    {
-      "neovim/nvim-lspconfig",
-      after = { "mason-lspconfig.nvim" },
-      config = function()
-        require("myconfig.config.lsp")
-      end,
-    },
+    "williamboman/mason-lspconfig.nvim",
+    requires = { "williamboman/mason.nvim" },
+  })
+
+  use("folke/neodev.nvim")
+
+  use({
+    "neovim/nvim-lspconfig",
+    after = { "mason-lspconfig.nvim" },
+    config = function()
+      require("myconfig.config.lsp")
+    end,
   })
   -- }}}
 
