@@ -9,3 +9,6 @@ vim.o.expandtab = true
 -- Use {{{}}} :D
 vim.o.foldmethod = "marker"
 
+-- Much nicer
+vim.o.autoindent = true
+
