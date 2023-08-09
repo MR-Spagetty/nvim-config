@@ -2,6 +2,10 @@ vim.o.number = true
 vim.o.mapleader = " "
 vim.o.scrolloff = 6
 
+-- Show dots for trailing spaces
+vim.o.list = true
+vim.opt.listchars:append({ trail = '•' })
+
 -- Persistent undo
 vim.o.undofile = true
 
