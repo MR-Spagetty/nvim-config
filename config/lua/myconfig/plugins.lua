@@ -24,6 +24,7 @@ return require("packer").startup(function(use)
   use { "xiyaowong/transparent.nvim" }
 
   -- {{{ Themes
+  -- {{{ Midnight
   use ({
     "dasupradyumna/midnight.nvim",
     config = function()
@@ -32,33 +33,37 @@ return require("packer").startup(function(use)
       })
     end,
   })
-
+  -- }}}
+  -- {{{ Rose-pine
   use ({
     "rose-pine/neovim",
     config = function()
-      require("midnight").setup ({
+      require("rose-pine").setup ({
         transparent = vim.g.transparent_enabled or false,
       })
     end,
   })
-
+  -- }}}
+  -- {{{ Kanagawa
   use ({
     "rebelot/kanagawa.nvim",
     config = function()
-      require("midnight").setup ({
+      require("kanagawa").setup ({
         transparent = vim.g.transparent_enabled or false,
       })
     end,
   })
-
+  -- }}}
+  -- {{{ Nightfox
   use ({
     "EdenEast/nightfox.nvim",
     config = function()
-      require("midnight").setup ({
+      require("nightfox").setup ({
         transparent = vim.g.transparent_enabled or false,
       })
     end,
   })
+  -- }}}
   -- }}}
 
   use {
