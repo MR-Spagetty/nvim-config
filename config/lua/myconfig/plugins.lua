@@ -19,6 +19,10 @@ return require("packer").startup(function(use)
 
   use("mbbill/undotree")
 
+  -- Adds a toggle for transparent background, very nice :)
+  -- It's persistent as well! Oh no..
+  use { "xiyaowong/transparent.nvim" }
+
   -- {{{ Themes
   -- {{{ Theme wrapper function
   -- This function sets up transparent with transparent_enabled
@@ -41,10 +45,6 @@ return require("packer").startup(function(use)
   usetranstheme("EdenEast/nightfox.nvim", require("nightfox"))
   -- }}}
 
-  -- Adds a toggle for transparent background, very nice :)
-  use {
-    "xiyaowong/transparent.nvim"
-  }
 
   use {
     'nvim-telescope/telescope.nvim',
