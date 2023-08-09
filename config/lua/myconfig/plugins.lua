@@ -17,6 +17,8 @@ return require("packer").startup(function(use)
     end,
   })
 
+  use("mbbill/undotree")
+
   -- {{{ Themes
   -- {{{ Theme wrapper function
   -- This function sets up transparent with transparent_enabled
