@@ -12,3 +12,5 @@ vim.o.foldmethod = "marker"
 -- Much nicer
 vim.o.autoindent = true
 
+-- Stop the thing from popping in and out
+vim.o.signcolumn = "yes:1"
