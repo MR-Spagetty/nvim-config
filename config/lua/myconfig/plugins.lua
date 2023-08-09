@@ -36,6 +36,9 @@ return require("packer").startup(function(use)
   use({
     "ms-jpq/coq_nvim",
     branch = "coq",
+    config = function()
+      require("myconfig.config.coq")
+    end,
     run = function()
       -- Kinda needs this
       vim.cmd.COQdeps()
