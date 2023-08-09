@@ -24,27 +24,42 @@ return require("packer").startup(function(use)
   use { "xiyaowong/transparent.nvim" }
 
   -- {{{ Themes
-  -- {{{ Theme wrapper function
-  -- This function sets up transparent with transparent_enabled
-  local function usetranstheme(theme, module)
-    use {
-      theme,
-      after = {"xiyaowong/transparent.nvim" },
-      config = function()
-        module.setup ({
-          transparent = vim.g.transparent_enabled,
-        })
-      end
-    }
-  end
-  --- }}}
+  use ({
+    "dasupradyumna/midnight.nvim",
+    config = function()
+      require("midnight").setup ({
+        transparent = vim.g.transparent_enabled or false,
+      })
+    end,
+  })
 
-  usetranstheme("dasupradyumna/midnight.nvim", require("midnight"))
-  usetranstheme("rose-pine/neovim", require("rose-pine"))
-  usetranstheme("rebelot/kanagawa.nvim", require("kanagawa"))
-  usetranstheme("EdenEast/nightfox.nvim", require("nightfox"))
+  use ({
+    "rose-pine/neovim",
+    config = function()
+      require("midnight").setup ({
+        transparent = vim.g.transparent_enabled or false,
+      })
+    end,
+  })
+
+  use ({
+    "rebelot/kanagawa.nvim",
+    config = function()
+      require("midnight").setup ({
+        transparent = vim.g.transparent_enabled or false,
+      })
+    end,
+  })
+
+  use ({
+    "EdenEast/nightfox.nvim",
+    config = function()
+      require("midnight").setup ({
+        transparent = vim.g.transparent_enabled or false,
+      })
+    end,
+  })
   -- }}}
-
 
   use {
     'nvim-telescope/telescope.nvim',
