@@ -2,7 +2,10 @@ vim.o.number = true
 vim.o.mapleader = " "
 vim.o.scrolloff = 6
 
--- Tab stuff
+-- Persistent undo
+vim.o.undofile = true
+
+-- Tab key stuff
 vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
