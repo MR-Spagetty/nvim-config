@@ -32,6 +32,19 @@ return require("packer").startup(function(use)
     end,
   })
 
+  -- {{{ Completion
+  use({
+    "ms-jpq/coq_nvim",
+    branch = "coq",
+  })
+
+  use({
+    "ms-jpq/coq.artifacts",
+    branch = "artifacts",
+    requires = "coq_nvim",
+  })
+  -- }}}
+
   -- {{{ LSP
   -- These should be configured in lsp.lua
   use({
@@ -43,7 +56,7 @@ return require("packer").startup(function(use)
 
   use({
     "neovim/nvim-lspconfig",
-    after = { "mason-lspconfig.nvim" },
+    after = { "mason-lspconfig.nvim", "coq_nvim" },
     config = function()
       require("myconfig.config.lsp")
     end,
