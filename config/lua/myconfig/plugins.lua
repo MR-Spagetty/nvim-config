@@ -38,8 +38,14 @@ return require("packer").startup(function(use)
     "xiyaowong/transparent.nvim"
   }
 
+  use {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.2',
     config = function()
+      require("myconfig.config.telescope")
     end,
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
   use({
     "williamboman/mason.nvim",
