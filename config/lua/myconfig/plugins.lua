@@ -20,8 +20,7 @@ return require("packer").startup(function(use)
   use("mbbill/undotree")
 
   -- Adds a toggle for transparent background, very nice :)
-  -- It's persistent as well! Oh no..
-  use { "xiyaowong/transparent.nvim" }
+  use("xiyaowong/transparent.nvim")
 
   -- {{{ Themes
   -- {{{ Midnight
