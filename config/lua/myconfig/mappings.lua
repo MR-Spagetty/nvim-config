@@ -1,6 +1,11 @@
 local wk = require("which-key")
 vim.g.mapleader = " "
 
+-- {{{ Non WhichKey
+-- Disable highlighting
+vim.keymap.set('n', '<Esc>', '<Esc>:noh<cr>', { silent = true})
+-- }}}
+
 -- NOTE: Harpoon is broken, binds commented out
 -- TODO: Change the prefix = <leader> to the corresponding one. E.g. <leader>g
 -- {{{ Nice terminal splitting: start_term(vsplit | split)
