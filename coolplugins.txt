@@ -1,0 +1,8 @@
+                  Cool plugins that I may or may not add later
+           ---------------------------------------------------------
+Highlight selections with colours:
+- https://github.com/Pocco81/high-str.nvim
+
+See colours! Hexes! Can pick and choose which
+- https://github.com/norcalli/nvim-colorizer.lua
+
