@@ -15,7 +15,7 @@ wk.register({
     v = { function() start_term("vsplit") end, "Vertical terminal" }
   },
   h = {
-    h = { function() start_term("vsplit") end, "Horizontal terminal" }
+    h = { function() start_term("split") end, "Horizontal terminal" }
   },
 }, { prefix = '<leader>' })
 -- }}}
