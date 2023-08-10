@@ -56,6 +56,17 @@ return require("packer").startup(function(use)
     end,
   })
   -- }}}
+  -- {{{ Catppuccin
+  use({
+    "catppuccin/nvim",
+    as = "catppuccin",
+    config = function()
+      require("catppuccin").setup({
+        transparent_background = vim.g.transparent_enabled or false,
+      })
+    end
+  })
+  -- }}}
   -- }}}
 
 -- {{{ Telescope
