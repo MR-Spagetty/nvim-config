@@ -24,14 +24,8 @@ return require("packer").startup(function(use)
 
   -- {{{ Themes
   -- {{{ Midnight
-  use ({
-    "dasupradyumna/midnight.nvim",
-    config = function()
-      require("midnight").setup ({
-        transparent = vim.g.transparent_enabled or false,
-      })
-    end,
-  })
+  --  Doesn't do transparent
+  use ("dasupradyumna/midnight.nvim")
   -- }}}
   -- {{{ Rose-pine
   use ({
