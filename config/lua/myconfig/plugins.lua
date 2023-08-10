@@ -75,10 +75,6 @@ return require("packer").startup(function(use)
     config = function()
       require("myconfig.config.coq")
     end,
-    run = function()
-      -- Kinda needs this
-      vim.cmd.COQdeps()
-    end,
   })
 
   use({
