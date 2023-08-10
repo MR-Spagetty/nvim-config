@@ -3,9 +3,21 @@ vim.g.mapleader = " "
 
 -- TODO: Change the prefix = <leader> to the corresponding one. E.g. <leader>g
 -- {{{ Nice terminal splitting: start_term(vsplit | split)
--- Settings are handled bu the autocmds
 local function start_term(split_cmd)
   vim.cmd("botright " .. split_cmd .. " term://" .. vim.env.SHELL)
+  -- Kill as soon as it's out of sight
+  vim.bo.bufhidden = "wipe"
+
+  vim.api.nvim_create_autocmd({ "TermClose" }, {
+    buffer = vim.api.nvim_get_current_buf(),
+    callback = function(args)
+      -- If it is in fact hidden, then the previous option should handle it
+      -- Thanks to https://old.reddit.com/r/neovim/comments/q5z38t/easiest_way_to_find_if_a_buffer_is_hidden/hggptam/
+      if vim.fn.getbufinfo(args.buf)[1].hidden == 0 then
+        vim.cmd "bwipeout"
+      end
+    end
+  })
 end
 -- }}}
 
