@@ -59,20 +59,13 @@ return require("packer").startup(function(use)
   -- }}}
   -- }}}
 
-  use {
+  use({
     'nvim-telescope/telescope.nvim',
     tag = '0.1.2',
     config = function()
       require("myconfig.config.telescope")
     end,
     requires = { {'nvim-lua/plenary.nvim'} }
-  }
-
-  use({
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end,
   })
 
   -- {{{ Completion
@@ -96,6 +89,13 @@ return require("packer").startup(function(use)
   -- }}}
 
   -- {{{ LSP
+  use({
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end,
+  })
+
   -- These should be configured in lsp.lua
   use({
     "williamboman/mason-lspconfig.nvim",
