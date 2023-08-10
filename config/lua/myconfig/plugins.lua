@@ -58,14 +58,21 @@ return require("packer").startup(function(use)
   -- }}}
   -- }}}
 
+-- {{{ Telescope
   use({
     'nvim-telescope/telescope.nvim',
     tag = '0.1.2',
     config = function()
       require("myconfig.config.telescope")
     end,
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { 'nvim-lua/plenary.nvim' }
   })
+
+  use({
+    'nvim-telescope/telescope-symbols.nvim',
+    requires = { 'nvim-telescope/telescope.nvim' }
+  })
+-- }}}
 
   -- {{{ Completion
   use({
