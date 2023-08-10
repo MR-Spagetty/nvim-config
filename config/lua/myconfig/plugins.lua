@@ -19,6 +19,13 @@ return require("packer").startup(function(use)
 
   use("mbbill/undotree")
 
+  use({
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("myconfig.config.indent-blankline")
+    end,
+  })
+
   -- Adds a toggle for transparent background, very nice :)
   use("xiyaowong/transparent.nvim")
 
