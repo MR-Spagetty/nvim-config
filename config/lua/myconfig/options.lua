@@ -24,3 +24,6 @@ vim.o.autoindent = true
 -- Stop the thing from popping in and out
 vim.o.signcolumn = "yes:1"
 
+-- Highlight line number
+vim.o.cursorline = true
+vim.o.cursorlineopt = "number"
