@@ -1,3 +1,4 @@
+-- Cool sets and options
 vim.o.number = true
 vim.o.scrolloff = 6
 
@@ -22,3 +23,4 @@ vim.o.autoindent = true
 
 -- Stop the thing from popping in and out
 vim.o.signcolumn = "yes:1"
+
