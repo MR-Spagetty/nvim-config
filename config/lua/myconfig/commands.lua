@@ -7,3 +7,6 @@ cmd("Symbols", "Telescope lsp_document_symbols", {})
 
 -- My beloved
 cmd("LG", "tabnew term://lazygit | setlocal nobuflisted bufhidden=wipe", {})
+
+-- Quick n Easy
+cmd("TT", "TransparentToggle", {})
