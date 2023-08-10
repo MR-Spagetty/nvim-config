@@ -138,6 +138,18 @@ return require("packer").startup(function(use)
     end
   })
 
+  use({
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require('gitsigns').setup({
+        -- The background of the signs isn't transparent,
+        -- but having both of these makes it look better.
+        signcolumn = true,
+        numhl = true,
+        current_line_blame = true,
+      })
+    end,
+  })
 
   use("tpope/vim-surround")
   use("tpope/vim-fugitive")
