@@ -1,6 +1,7 @@
 local wk = require("which-key")
 vim.g.mapleader = " "
 
+-- TODO: Change the prefix = <leader> to the corresponding one. E.g. <leader>g
 -- {{{ Nice terminal splitting: start_term(vsplit | split)
 -- Settings are handled bu the autocmds
 local function start_term(split_cmd)
@@ -45,7 +46,7 @@ wk.register({
     vim.api.nvim_feedkeys(esc, 'nx', false)
     require("Comment.api").toggle.linewise(vim.fn.visualmode())
   end, "Comment" }
-}, { mode = { "v" }, prefix = '<leader>'})
+}, { mode = { "v" }, prefix = '<leader>' })
 -- }}}
 
 -- {{{ Toggles
