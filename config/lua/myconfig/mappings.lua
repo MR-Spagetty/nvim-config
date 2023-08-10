@@ -117,3 +117,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 -- }}}
+
+-- {{{ Loose mappings
+wk.register({
+  x = { "<cmd>Bdelete<cr>", "Delete buffer", {} },
+}, { prefix = '<leader>' })
+-- }}}
