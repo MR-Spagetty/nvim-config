@@ -124,4 +124,21 @@ return require("packer").startup(function(use)
     end,
   })
 
+  use({
+    "ethanholz/nvim-lastplace",
+    config = function ()
+      require("nvim-lastplace").setup({})
+    end
+  })
+
+  use({
+   "numToStr/Comment.nvim",
+    config = function()
+      require('Comment').setup()
+    end
+  })
+
+
+  use("tpope/vim-surround")
+  use("tpope/vim-fugitive")
 end)
