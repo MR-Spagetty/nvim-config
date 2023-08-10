@@ -7,3 +7,6 @@ telescope.setup {
     }
   }
 }
+
+-- Get harpooning
+telescope.load_extension('harpoon')

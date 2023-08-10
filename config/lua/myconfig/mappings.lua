@@ -68,7 +68,22 @@ wk.register({
 }, { prefix = '<leader>t' })
 ---}}}
 
--- {{{ TODO: Telescope
+-- {{{ Telescope
+local telebuilt = require("telescope.builtin")
+wk.register({
+  name = "Telescope",
+  f = { telebuilt.find_files, "Find files" },
+  h = { "<cmd>Telescope harpoon marks<cr>", "Harpoon marks" },
+  g = { telebuilt.live_grep, "Live grep" },
+  a = { telebuilt.builtin, "Telescope builtins" },
+  t = { telebuilt.treesitter, "Treesitter symbols" },
+  q = { telebuilt.quickfix, "Quickfix" },
+  l = { telebuilt.loclist, "Location list" },
+  p = { telebuilt.oldfiles, "Previous files" },
+  b = { telebuilt.buffers, "Open buffers" },
+  j = { telebuilt.jumplist, "Jump list" },
+  ["/"] = { telebuilt.current_buffer_fuzzy_find, "Fuzzy find" },
+}, { prefix = "<leader>f" })
 -- }}}
 
 -- {{{ LSP
@@ -113,6 +128,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       D = { vim.lsp.buf.declaration, "Declaration", opts },
       i = { vim.lsp.buf.implementation, "Implementation", opts },
       t = { vim.lsp.buf.type_definition, "Type definition", opts },
+      v = { require('telescope.builtin').diagnostics, "Diagnostics" },
     }, { prefix = '<leader>l' })
   end,
 })
@@ -120,6 +136,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- {{{ Loose mappings
 wk.register({
-  x = { "<cmd>Bdelete<cr>", "Delete buffer", {} },
+  x = { "<cmd>Bdelete<cr>", "Delete buffer" },
 }, { prefix = '<leader>' })
 -- }}}

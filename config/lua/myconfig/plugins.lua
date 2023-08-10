@@ -175,6 +175,10 @@ return require("packer").startup(function(use)
 
   -- Delete buffers without messing things up
   use("famiu/bufdelete.nvim")
+
+  -- Blazingly fast
+  use({"ThePrimeagen/harpoon", requires = { 'nvim-lua/plenary.nvim' }})
+
   use("tpope/vim-surround")
   use("tpope/vim-fugitive")
 end)
