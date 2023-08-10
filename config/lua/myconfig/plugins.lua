@@ -173,6 +173,8 @@ return require("packer").startup(function(use)
     end,
   })
 
+  -- Delete buffers without messing things up
+  use("famiu/bufdelete.nvim")
   use("tpope/vim-surround")
   use("tpope/vim-fugitive")
 end)
