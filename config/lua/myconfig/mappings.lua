@@ -8,7 +8,6 @@ local function start_term(split_cmd)
 end
 -- }}}
 
--- Normal mode
 -- {{{ Terminal starting
 wk.register({
   v = {
@@ -37,7 +36,7 @@ wk.register({
 -- {{{ Commenting
 wk.register({
   ["/"] = { function() require("Comment.api").toggle.linewise.current() end, "Comment" }
-}, { mode = { "n" }, prefix = '<leader>'})
+}, { prefix = '<leader>' })
 
 wk.register({
   ["/"] = { function()
@@ -48,3 +47,14 @@ wk.register({
   end, "Comment" }
 }, { mode = { "v" }, prefix = '<leader>'})
 -- }}}
+
+-- {{{ Toggles
+wk.register({
+  name = "Toggles",
+  s = { "<cmd>set spell!<cr>", "Toggle spellcheck" },
+}, { prefix = '<leader>t' })
+---}}}
+
+-- {{{ TODO: Telescope
+-- }}}
+
