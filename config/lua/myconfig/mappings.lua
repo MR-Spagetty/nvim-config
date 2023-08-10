@@ -1,6 +1,7 @@
 local wk = require("which-key")
 vim.g.mapleader = " "
 
+-- NOTE: Harpoon is broken, binds commented out
 -- TODO: Change the prefix = <leader> to the corresponding one. E.g. <leader>g
 -- {{{ Nice terminal splitting: start_term(vsplit | split)
 local function start_term(split_cmd)
@@ -73,7 +74,7 @@ local telebuilt = require("telescope.builtin")
 wk.register({
   name = "Telescope",
   f = { telebuilt.find_files, "Find files" },
-  h = { "<cmd>Telescope harpoon marks<cr>", "Harpoon marks" },
+  -- h = { "<cmd>Telescope harpoon marks<cr>", "Harpoon marks" },
   g = { telebuilt.live_grep, "Live grep" },
   a = { telebuilt.builtin, "Telescope builtins" },
   t = { telebuilt.treesitter, "Treesitter symbols" },
@@ -85,6 +86,16 @@ wk.register({
   ["/"] = { telebuilt.current_buffer_fuzzy_find, "Fuzzy find" },
 }, { prefix = "<leader>f" })
 -- }}}
+
+--[[ -- {{{ Harpoon
+wk.register({
+  name = "Harpoon",
+  a = { require("harpoon.mark").add_file, "Add file" },
+  m = { require("harpoon.ui").toggle_quick_menu, "Toggle menu" },
+  n = { require("harpoon.ui").nav_next(), "Next file" },
+  p = { require("harpoon.ui").nav_prev(), "Prev file" },
+}, { prefix = "<leader>h" })
+-- }}} ]]
 
 -- {{{ LSP
 --  AutoCMD from lspconfig readme.md, hotkeys and such modified by me

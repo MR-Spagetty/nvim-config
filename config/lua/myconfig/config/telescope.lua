@@ -9,4 +9,4 @@ telescope.setup {
 }
 
 -- Get harpooning
-telescope.load_extension('harpoon')
+-- telescope.load_extension('harpoon')
