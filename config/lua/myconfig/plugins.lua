@@ -3,7 +3,7 @@ return require("packer").startup(function(use)
   -- Packer can manage itself
   use("wbthomason/packer.nvim")
 
-  -- Tree sitter my beloved
+  -- {{{ Tree sitter my beloved
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
@@ -16,15 +16,7 @@ return require("packer").startup(function(use)
       })
     end,
   })
-
-  use("mbbill/undotree")
-
-  use({
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("myconfig.config.indent-blankline")
-    end,
-  })
+  -- }}}
 
   -- Adds a toggle for transparent background, very nice :)
   use("xiyaowong/transparent.nvim")
@@ -115,5 +107,14 @@ return require("packer").startup(function(use)
     end,
   })
   -- }}}
+
+  use("mbbill/undotree")
+
+  use({
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("myconfig.config.indent-blankline")
+    end,
+  })
 
 end)
