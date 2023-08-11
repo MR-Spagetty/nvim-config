@@ -45,7 +45,7 @@ wk.register({
     -- Open fugitive to the right
     g = { "<cmd>Git<cr><C-w>L", "Fugitive" },
     b = { "<cmd>Gitsigns blame_line<cr>", "Show blame" },
-    s = { "<cmd>Telescope git_status<cr>", "Git status" },
+    d = { "<cmd>Telescope git_status<cr>", "Git status" },
     n = { "<cmd>Gitsigns next_hunk<cr>", "Next hunk" },
     p = { "<cmd>Gitsigns prev_hunk<cr>", "Prev hunk" },
   },
