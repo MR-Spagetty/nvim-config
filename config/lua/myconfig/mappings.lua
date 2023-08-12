@@ -170,4 +170,9 @@ wk.register({
 wk.register({
   x = { "<cmd>Bdelete<cr>", "Delete buffer" },
 }, { prefix = '<leader>' })
+
+wk.register({
+  w = { "<cmd>WhichKey<cr>", "Open WhichKey" },
+}, { mode = { "n", "v" }, prefix = '<leader>' })
+
 -- }}}
