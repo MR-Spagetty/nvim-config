@@ -157,6 +157,15 @@ wk.register({
 }, {})
 -- }}}
 
+-- {{{ Text moving
+wk.register({
+  ["<M-Down>"] = {":move '>+1<cr>gv=gv", "Move lines down"},
+  ["<M-Up>"] = {":move '<-2<cr>gv=gv", "Move lines up"},
+  ["<M-k>"] = {":move '<-2<cr>gv=gv", "which_key_ignore"},
+  ["<M-j>"] = {":move '>+1<cr>gv=gv", "which_key_ignore"},
+}, { mode = "v"})
+-- }}}
+
 -- {{{ Loose mappings
 wk.register({
   x = { "<cmd>Bdelete<cr>", "Delete buffer" },
