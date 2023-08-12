@@ -79,9 +79,19 @@ return require("packer").startup(function(use)
     requires = { 'nvim-lua/plenary.nvim' }
   })
 
+  -- Emojis, kaomoji, unicode and latex math
   use({
     'nvim-telescope/telescope-symbols.nvim',
     requires = { 'nvim-telescope/telescope.nvim' }
+  })
+
+  -- Show images and other media files!
+  use({
+    "nvim-telescope/telescope-media-files.nvim",
+    requires = { 'nvim-telescope/telescope.nvim' },
+    config  = function()
+      require('telescope').load_extension('media_files')
+    end,
   })
 -- }}}
 
