@@ -148,6 +148,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 -- }}}
 
+-- {{{ Easy window movement with ctrl arrow
+wk.register({
+  ["<C-Up>"]= {"<C-w>k", "Go to the up window"},
+  ["<C-Down>"]= {"<C-w>j", "Go to the down window"},
+  ["<C-Left>"]= {"<C-w>h", "Go to the left window"},
+  ["<C-Right>"]= {"<C-w>l", "Go to the right window"},
+}, {})
+-- }}}
+
 -- {{{ Loose mappings
 wk.register({
   x = { "<cmd>Bdelete<cr>", "Delete buffer" },
