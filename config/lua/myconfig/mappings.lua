@@ -169,7 +169,15 @@ wk.register({
 -- {{{ Loose mappings
 wk.register({
   x = { "<cmd>Bdelete<cr>", "Delete buffer" },
-  e = { "<cmd>NvimTreeToggle<cr>", "Toggle Nvim tree" },
+  e = { function()
+    -- Toggle or focus depending on if we're on it
+    local tree = require('nvim-tree.api').tree
+    if tree.is_tree_buf() then
+      tree.close_in_this_tab()
+    else
+      tree.focus()
+    end
+  end, "Toggle Nvim tree" },
 }, { prefix = '<leader>' })
 
 wk.register({
