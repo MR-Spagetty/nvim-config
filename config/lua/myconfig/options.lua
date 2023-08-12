@@ -1,3 +1,7 @@
+-- Needs to be set early, for nvim tree
+vim.g.loaded_netrw       = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Cool sets and options
 vim.o.number = true
 vim.o.scrolloff = 6
