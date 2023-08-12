@@ -186,9 +186,25 @@ return require("packer").startup(function(use)
   -- Delete buffers without messing things up
   use("famiu/bufdelete.nvim")
 
-  -- Blazingly fast, doesn't work. Sends me to the wrong file.
-  -- use({"ThePrimeagen/harpoon", requires = { 'nvim-lua/plenary.nvim' }})
+  use({
+    "nvim-tree/nvim-tree.lua",
+    config = function()
+      require("myconfig.config.nvim-tree")
+    end
+  })
 
   use("tpope/vim-surround")
   use("tpope/vim-fugitive")
+
+  -- {{{ Commented out
+  -- Blazingly fast, doesn't work. Sends me to the wrong file.
+  -- use({"ThePrimeagen/harpoon", requires = { 'nvim-lua/plenary.nvim' }})
+
+  --[[ Very cool plugin, maybe when there's sixel support.
+  use {
+    "3rd/image.nvim",
+    rocks = { 'magick' },
+  }
+  ]]
+  -- }}}
 end)

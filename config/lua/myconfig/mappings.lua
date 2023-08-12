@@ -108,7 +108,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local opts = { buffer = ev.buf }
 
     wk.register({
-      e = { vim.diagnostic.open_float, "Floating diagnostic" },
+      q = { vim.diagnostic.open_float, "Floating diagnostic" },
     }, { prefix = "<leader>" })
 
     wk.register({
@@ -169,6 +169,7 @@ wk.register({
 -- {{{ Loose mappings
 wk.register({
   x = { "<cmd>Bdelete<cr>", "Delete buffer" },
+  e = { "<cmd>NvimTreeToggle<cr>", "Toggle Nvim tree" },
 }, { prefix = '<leader>' })
 
 wk.register({
