@@ -140,7 +140,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document symbols", opts },
       S = { vim.lsp.buf.signature_help, "Signature help", opts },
       n = { vim.lsp.buf.rename, "Rename", opts },
-      f = { function() vim.lsp.buf.format { async = true } end, "Format", opts },
+      f = { vim.cmd.GuardFmt, "Format", opts },
       d = { vim.lsp.buf.definition, "Definition", opts },
       D = { vim.lsp.buf.declaration, "Declaration", opts },
       i = { vim.lsp.buf.implementation, "Implementation", opts },

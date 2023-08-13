@@ -180,6 +180,13 @@ return require("packer").startup(function(use)
   })
 
   use({
+    "nvimdev/guard.nvim",
+    config = function()
+      require("myconfig.config.guard")
+    end
+  })
+
+  use({
     "ethanholz/nvim-lastplace",
     config = function ()
       require("nvim-lastplace").setup({})
