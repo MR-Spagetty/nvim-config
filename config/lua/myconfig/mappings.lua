@@ -88,6 +88,7 @@ wk.register({
   b = { telebuilt.buffers, "Open buffers" },
   j = { telebuilt.jumplist, "Jump list" },
   o = { tele.extensions.projects.projects, "Search projects" },
+  d = { vim.cmd.TodoTelescope, "Find TODOs" },
   ["/"] = { telebuilt.current_buffer_fuzzy_find, "Fuzzy find" },
 }, { prefix = "<leader>f" })
 -- }}}
