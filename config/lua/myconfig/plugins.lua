@@ -203,6 +203,16 @@ return require("packer").startup(function(use)
     end
   })
 
+  -- Highlight lines in cursor jump
+  use({
+    'rainbowhxch/beacon.nvim',
+    config = function()
+      require('beacon').setup({
+        timeout = 800,
+      })
+    end
+  })
+
   use("tpope/vim-surround")
   use("tpope/vim-fugitive")
 
