@@ -216,6 +216,12 @@ return require("packer").startup(function(use)
     end
   })
 
+  -- Yes!!
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
+
   -- Highlight lines in cursor jump
   use({
     'rainbowhxch/beacon.nvim',
