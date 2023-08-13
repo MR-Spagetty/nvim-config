@@ -11,9 +11,6 @@ require("nvim-tree").setup {
     side = "left",
     preserve_window_proportions = true,
   },
-  update_focused_file = {
-    enable = true,
-  },
   filters = {
     git_ignored = false,
     dotfiles = true,
@@ -25,5 +22,13 @@ require("nvim-tree").setup {
   },
   modified = {
     enable = true,
+  },
+
+  -- For project.nvim
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = true
   },
 }

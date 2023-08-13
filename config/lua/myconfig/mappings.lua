@@ -73,6 +73,7 @@ wk.register({
 ---}}}
 
 -- {{{ Telescope
+local tele = require("telescope")
 local telebuilt = require("telescope.builtin")
 wk.register({
   name = "Telescope",
@@ -86,6 +87,7 @@ wk.register({
   p = { telebuilt.oldfiles, "Previous files" },
   b = { telebuilt.buffers, "Open buffers" },
   j = { telebuilt.jumplist, "Jump list" },
+  o = { tele.extensions.projects.projects, "Search projects" },
   ["/"] = { telebuilt.current_buffer_fuzzy_find, "Fuzzy find" },
 }, { prefix = "<leader>f" })
 -- }}}

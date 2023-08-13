@@ -85,7 +85,17 @@ return require("packer").startup(function(use)
     requires = { 'nvim-telescope/telescope.nvim' }
   })
 
-  -- Show images and other media files!
+  -- Projects!!
+  use {
+    "ahmedkhalf/project.nvim",
+    requires = { 'nvim-telescope/telescope.nvim' },
+    config = function()
+      require("project_nvim").setup {}
+      require('telescope').load_extension('projects')
+    end
+  }
+
+  -- Show images and other media files! Only ascii tho :(
   use({
     "nvim-telescope/telescope-media-files.nvim",
     requires = { 'nvim-telescope/telescope.nvim' },
