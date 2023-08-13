@@ -4,7 +4,14 @@ local ft = require "guard.filetype"
 --        :lint('lint-tool-1')
 --        :append('lint-tool-2')
 
-ft("c,cpp,java,json"):fmt { cmd = "clang-format", find = ".clang-format" }
+-- {{{ My custom fmt definitions
+local fmts = {
+  -- If I don't tell it to find the file it doesn't follow it
+  ["clang-format"] = { cmd = "clang-format", find = ".clang-format", stdin = true },
+}
+-- }}}
+
+ft("c,cpp,java,json"):fmt(fmts["clang-format"])
 ft("cpp"):lint "clang-tidy"
 ft("lua"):fmt "stylua"
 
