@@ -96,6 +96,11 @@ return require("packer").startup(function(use)
   } }}}]]
 
   use({
+    "nvim-telescope/telescope-file-browser.nvim",
+    requires = { "nvim-telescope/telescope.nvim" }
+  })
+
+  use({
     'nvim-telescope/telescope-project.nvim',
     requires = { 'nvim-telescope/telescope.nvim' },
   })
@@ -241,6 +246,7 @@ return require("packer").startup(function(use)
   end
   })
 
+  use("nvim-tree/nvim-web-devicons")
   use("tpope/vim-surround")
   use("tpope/vim-fugitive")
 
