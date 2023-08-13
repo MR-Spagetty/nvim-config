@@ -180,10 +180,8 @@ return require("packer").startup(function(use)
   }
 
   use {
-    "nvimdev/guard.nvim",
-    config = function()
-      require "myconfig.config.guard"
-    end,
+    "creativenull/efmls-configs-nvim",
+    requires = { "neovim/nvim-lspconfig" },
   }
 
   use {

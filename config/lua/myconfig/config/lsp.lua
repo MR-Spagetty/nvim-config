@@ -38,3 +38,43 @@ lspconfig.lua_ls.setup(caps {
   },
 })
 -- }}}
+
+-- {{{ Efm languager server(s)
+-- Mostly taken from https://github.com/creativenull/efmls-configs-nvim
+local efmls = require "efmls-configs"
+local on_attach = nil
+efmls.init {
+  -- Your custom attach function
+  on_attach = on_attach,
+
+  -- Enable formatting provided by efm langserver
+  init_options = {
+    documentFormatting = true,
+  },
+}
+
+local function getlint(name)
+  return require("efmls-configs.linters." .. name)
+end
+local function getfmt(name)
+  return require("efmls-configs.formatters." .. name)
+end
+efmls.setup {
+  cpp = {
+    linter = getlint "cppcheck",
+    formatter = getfmt "clang_format",
+  },
+  c = {
+    linter = getlint "cppcheck",
+    formatter = getfmt "clang_format",
+  },
+
+  lua = {
+    linter = getlint "luacheck",
+    formatter = getfmt "stylua",
+  },
+  java = {
+    formatter = getfmt "clang_format"
+  }
+}
+-- }}}
