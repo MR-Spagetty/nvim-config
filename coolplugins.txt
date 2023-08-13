@@ -3,9 +3,6 @@
 Highlight selections with colours:
 - https://github.com/Pocco81/high-str.nvim
 
-See colours! Hexes! Can pick and choose which
-- https://github.com/norcalli/nvim-colorizer.lua
-
 Neat wild menu
   {
     "gelguy/wilder.nvim",
