@@ -74,7 +74,10 @@ efmls.setup {
     formatter = getfmt "stylua",
   },
   java = {
-    formatter = getfmt "clang_format"
-  }
+    formatter = getfmt "clang_format",
+  },
+  json = {
+    formatter = getfmt "clang_format",
+  },
 }
 -- }}}
