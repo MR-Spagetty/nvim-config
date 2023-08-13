@@ -6,3 +6,22 @@ Highlight selections with colours:
 See colours! Hexes! Can pick and choose which
 - https://github.com/norcalli/nvim-colorizer.lua
 
+Neat wild menu
+  {
+    "gelguy/wilder.nvim",
+    config = function()
+      local wilder = require "wilder"
+      wilder.setup { modes = { ":", "/", "?" } }
+
+      wilder.set_option(
+        "renderer",
+        wilder.popupmenu_renderer {
+          highlighter = wilder.basic_highlighter(),
+          highlights = {
+            accent = wilder.make_hl(
+              'WilderAccent', 'Pmenu', {{a = 1}, {a = 1}, {foreground = '#f4468f'}}),
+          },
+        })
+    end,
+    keys = { ":", "/", "?" },
+  },
