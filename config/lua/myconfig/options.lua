@@ -2,6 +2,9 @@
 vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Vertical splits go to the right
+vim.o.splitright = true
+
 -- Cool sets and options
 vim.o.number = true
 vim.o.scrolloff = 6
