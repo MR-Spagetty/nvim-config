@@ -105,6 +105,12 @@ return require("packer").startup(function(use)
     requires = { 'nvim-telescope/telescope.nvim' },
   })
 
+  -- Use telescope instead of nvim's default.
+  use({
+    'nvim-telescope/telescope-ui-select.nvim',
+    requires = { 'nvim-telescope/telescope.nvim' },
+  })
+
   -- Show images and other media files! Only ascii tho :(
   use({
     "nvim-telescope/telescope-media-files.nvim",
