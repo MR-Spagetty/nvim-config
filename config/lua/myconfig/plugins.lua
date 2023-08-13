@@ -213,6 +213,19 @@ return require("packer").startup(function(use)
     end
   })
 
+  -- Quite neat.
+  use({
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require'colorizer'.setup({
+        '*',
+        highlight = {
+          keyword = "fg",
+        },
+      })
+    end
+  })
+
   -- TODO comments! My beloved!
   use({
     "folke/todo-comments.nvim",
