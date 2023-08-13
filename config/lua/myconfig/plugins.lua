@@ -213,6 +213,19 @@ return require("packer").startup(function(use)
     end
   })
 
+  -- TODO comments! My beloved!
+  use({
+    "folke/todo-comments.nvim",
+    requires = { "nvim-lua/plenary.nvim", --[["folke/trouble.nvim"]] },
+    config = function()
+      require('todo-comments').setup ({
+      highlight = {
+        keyword = "fg",
+      },
+    })
+  end
+  })
+
   use("tpope/vim-surround")
   use("tpope/vim-fugitive")
 
