@@ -11,11 +11,11 @@ autocmd({ "TermOpen" }, { command = "setlocal nonumber | normal a" })
 augroup("ToggleRNu", { clear = true })
 autocmd({ "InsertEnter" }, {
   command = "setlocal norelativenumber",
-  group = "ToggleRNu"
+  group = "ToggleRNu",
 })
 autocmd({ "InsertLeave" }, {
   command = "setlocal relativenumber",
-  group = "ToggleRNu"
+  group = "ToggleRNu",
 })
 -- }}}
 
@@ -24,7 +24,7 @@ autocmd({ "InsertLeave" }, {
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = "java",
   callback = function()
-    if vim.fn.filereadable("build.gradle") == 1 then
+    if vim.fn.filereadable "build.gradle" == 1 then
       vim.bo.makeprg = "gradle run"
     else
       vim.bo.makeprg = "java %"

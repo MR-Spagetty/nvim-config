@@ -1,89 +1,89 @@
 -- Function to bind
 return require("packer").startup(function(use)
   -- Packer can manage itself
-  use("wbthomason/packer.nvim")
+  use "wbthomason/packer.nvim"
 
   -- {{{ Tree sitter my beloved
-  use({
+  use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     config = function()
       -- Tiny setup, so it stays here.
-      require("nvim-treesitter.configs").setup({
+      require("nvim-treesitter.configs").setup {
         ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
         auto_install = true,
         highlight = { enable = true },
-      })
+      }
     end,
-  })
+  }
   -- }}}
 
   -- Adds a toggle for transparent background, very nice :)
-  use("xiyaowong/transparent.nvim")
+  use "xiyaowong/transparent.nvim"
 
   -- {{{ Themes
   -- {{{ Midnight
   --  Doesn't do transparent
-  use ("dasupradyumna/midnight.nvim")
+  use "dasupradyumna/midnight.nvim"
   -- }}}
   -- {{{ Rose-pine
-  use ({
+  use {
     "rose-pine/neovim",
     config = function()
-      require("rose-pine").setup ({
+      require("rose-pine").setup {
         transparent = vim.g.transparent_enabled or false,
-      })
+      }
     end,
-  })
+  }
   -- }}}
   -- {{{ Kanagawa
-  use ({
+  use {
     "rebelot/kanagawa.nvim",
     config = function()
-      require("kanagawa").setup ({
+      require("kanagawa").setup {
         transparent = vim.g.transparent_enabled or false,
-      })
+      }
     end,
-  })
+  }
   -- }}}
   -- {{{ Nightfox
-  use ({
+  use {
     "EdenEast/nightfox.nvim",
     config = function()
-      require("nightfox").setup ({
+      require("nightfox").setup {
         transparent = vim.g.transparent_enabled or false,
-      })
+      }
     end,
-  })
+  }
   -- }}}
   -- {{{ Catppuccin
-  use({
+  use {
     "catppuccin/nvim",
     as = "catppuccin",
     config = function()
-      require("catppuccin").setup({
+      require("catppuccin").setup {
         transparent_background = vim.g.transparent_enabled or false,
-      })
-    end
-  })
+      }
+    end,
+  }
   -- }}}
   -- }}}
 
--- {{{ Telescope
-  use({
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.2',
+  -- {{{ Telescope
+  use {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.2",
     config = function()
-      require("myconfig.config.telescope")
+      require "myconfig.config.telescope"
     end,
-    requires = { 'nvim-lua/plenary.nvim' }
-  })
+    requires = { "nvim-lua/plenary.nvim" },
+  }
 
   -- Emojis, kaomoji, unicode and latex math
-  use({
-    'nvim-telescope/telescope-symbols.nvim',
-    requires = { 'nvim-telescope/telescope.nvim' }
-  })
+  use {
+    "nvim-telescope/telescope-symbols.nvim",
+    requires = { "nvim-telescope/telescope.nvim" },
+  }
 
   -- Projects!!
   --[[{{{ project.nvim use {
@@ -95,71 +95,71 @@ return require("packer").startup(function(use)
     end
   } }}}]]
 
-  use({
+  use {
     "nvim-telescope/telescope-file-browser.nvim",
-    requires = { "nvim-telescope/telescope.nvim" }
-  })
+    requires = { "nvim-telescope/telescope.nvim" },
+  }
 
-  use({
-    'nvim-telescope/telescope-project.nvim',
-    requires = { 'nvim-telescope/telescope.nvim' },
-  })
+  use {
+    "nvim-telescope/telescope-project.nvim",
+    requires = { "nvim-telescope/telescope.nvim" },
+  }
 
   -- Use telescope instead of nvim's default.
-  use({
-    'nvim-telescope/telescope-ui-select.nvim',
-    requires = { 'nvim-telescope/telescope.nvim' },
-  })
+  use {
+    "nvim-telescope/telescope-ui-select.nvim",
+    requires = { "nvim-telescope/telescope.nvim" },
+  }
 
   -- Show images and other media files! Only ascii tho :(
-  use({
+  use {
     "nvim-telescope/telescope-media-files.nvim",
-    requires = { 'nvim-telescope/telescope.nvim' },
-  })
--- }}}
+    requires = { "nvim-telescope/telescope.nvim" },
+  }
+  -- }}}
 
   -- {{{ Completion
-  use({
+  use {
     "ms-jpq/coq_nvim",
     branch = "coq",
     config = function()
-      require("myconfig.config.coq")
+      require "myconfig.config.coq"
     end,
-  })
+  }
 
-  use({
+  use {
     "ms-jpq/coq.artifacts",
     branch = "artifacts",
     requires = "coq_nvim",
-  })
+  }
   -- }}}
 
   -- {{{ LSP
-  use({
+  use {
     "williamboman/mason.nvim",
     config = function()
       require("mason").setup()
     end,
-  })
+  }
 
   -- These should be configured in lsp.lua
-  use({
+  use {
     "williamboman/mason-lspconfig.nvim",
     requires = { "williamboman/mason.nvim" },
-  })
+  }
 
-  use("folke/neodev.nvim")
+  use "folke/neodev.nvim"
 
-  use({
+  use {
     "neovim/nvim-lspconfig",
     after = { "mason-lspconfig.nvim", "coq_nvim" },
     config = function()
-      require("myconfig.config.lsp")
+      require "myconfig.config.lsp"
     end,
-  })
+  }
   -- }}}
 
-  use({
+  use {
     "folke/which-key.nvim",
     config = function()
       vim.o.timeout = true
@@ -167,107 +167,111 @@ return require("packer").startup(function(use)
       require("which-key").setup {
         triggers_nowait = { "z=" },
       }
-    end
-  })
+    end,
+  }
 
-  use("mbbill/undotree")
+  use "mbbill/undotree"
 
-  use({
+  use {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require("myconfig.config.indent-blankline")
+      require "myconfig.config.indent-blankline"
     end,
-  })
+  }
 
-  use({
+  use {
     "nvimdev/guard.nvim",
     config = function()
-      require("myconfig.config.guard")
-    end
-  })
+      require "myconfig.config.guard"
+    end,
+  }
 
-  use({
+  use {
     "ethanholz/nvim-lastplace",
-    config = function ()
-      require("nvim-lastplace").setup({})
-    end
-  })
-
-  use({
-   "numToStr/Comment.nvim",
     config = function()
-      require('Comment').setup()
-    end
-  })
+      require("nvim-lastplace").setup {}
+    end,
+  }
 
-  use({
+  use {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+  }
+
+  use {
     "lewis6991/gitsigns.nvim",
     config = function()
-      require('gitsigns').setup({
+      require("gitsigns").setup {
         -- The background of the signs isn't transparent,
         -- but having both of these makes it look better.
         signcolumn = true,
         numhl = true,
         current_line_blame = true,
-      })
+      }
     end,
-  })
+  }
 
   -- Delete buffers without messing things up
-  use("famiu/bufdelete.nvim")
+  use "famiu/bufdelete.nvim"
 
-  use({
+  use {
     "nvim-tree/nvim-tree.lua",
     config = function()
-      require("myconfig.config.nvim-tree")
-    end
-  })
+      require "myconfig.config.nvim-tree"
+    end,
+  }
 
   -- Yes!!
   use {
     "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
+    config = function()
+      require("nvim-autopairs").setup {}
+    end,
   }
 
   -- Highlight lines in cursor jump
-  use({
-    'rainbowhxch/beacon.nvim',
+  use {
+    "rainbowhxch/beacon.nvim",
     config = function()
-      require('beacon').setup({
+      require("beacon").setup {
         timeout = 800,
-      })
-    end
-  })
+      }
+    end,
+  }
 
   -- Quite neat.
-  use({
-    'norcalli/nvim-colorizer.lua',
+  use {
+    "norcalli/nvim-colorizer.lua",
     config = function()
-      require'colorizer'.setup({
-        '*',
+      require("colorizer").setup {
+        "*",
         highlight = {
           keyword = "fg",
         },
-      })
-    end
-  })
+      }
+    end,
+  }
 
   -- TODO comments! My beloved!
-  use({
+  use {
     "folke/todo-comments.nvim",
-    requires = { "nvim-lua/plenary.nvim", --[["folke/trouble.nvim"]] },
+    requires = {
+      "nvim-lua/plenary.nvim", --[["folke/trouble.nvim"]]
+    },
     config = function()
-      require('todo-comments').setup ({
-      highlight = {
-        keyword = "fg",
-      },
-    })
-  end
-  })
+      require("todo-comments").setup {
+        highlight = {
+          keyword = "fg",
+        },
+      }
+    end,
+  }
 
-  use("nvim-tree/nvim-web-devicons")
-  use("tpope/vim-surround")
-  use("tpope/vim-fugitive")
+  use "nvim-tree/nvim-web-devicons"
+  use "tpope/vim-surround"
+  use "tpope/vim-fugitive"
 
   -- {{{ Commented out
   -- Blazingly fast, doesn't work. Sends me to the wrong file.

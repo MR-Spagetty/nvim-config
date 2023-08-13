@@ -12,9 +12,17 @@ cmd("LG", "tabnew term://lazygit | setlocal nobuflisted bufhidden=wipe", {})
 cmd("TT", "TransparentToggle", {})
 
 -- {{{ Telescope symbols
-cmd("Kaomoji",     function() require('telescope.builtin').symbols { sources = {'kaomoji'} } end, {})
-cmd("Emoji",       function() require('telescope.builtin').symbols { sources =   {'emoji'} } end, {})
-cmd("MathUnicode", function() require('telescope.builtin').symbols { sources =    {'math'} } end, {})
-cmd("MathLatex",   function() require('telescope.builtin').symbols { sources =   {'latex'} } end, {})
+cmd("Kaomoji", function()
+  require("telescope.builtin").symbols { sources = { "kaomoji" } }
+end, {})
+cmd("Emoji", function()
+  require("telescope.builtin").symbols { sources = { "emoji" } }
+end, {})
+cmd("MathUnicode", function()
+  require("telescope.builtin").symbols { sources = { "math" } }
+end, {})
+cmd("MathLatex", function()
+  require("telescope.builtin").symbols { sources = { "latex" } }
+end, {})
 -- }}}
 

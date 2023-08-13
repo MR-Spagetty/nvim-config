@@ -1,5 +1,5 @@
-require("myconfig.options")
-require("myconfig.plugins")
-require("myconfig.mappings")
-require("myconfig.commands")
-require("myconfig.autocmds")
+require "myconfig.options"
+require "myconfig.plugins"
+require "myconfig.mappings"
+require "myconfig.commands"
+require "myconfig.autocmds"

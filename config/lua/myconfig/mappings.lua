@@ -1,9 +1,9 @@
-local wk = require("which-key")
+local wk = require "which-key"
 vim.g.mapleader = " "
 
 -- {{{ Non WhichKey
 -- Disable highlighting
-vim.keymap.set('n', '<Esc>', '<Esc>:noh<cr>', { silent = true})
+vim.keymap.set("n", "<Esc>", "<Esc>:noh<cr>", { silent = true })
 -- }}}
 
 -- NOTE: Harpoon is broken, binds commented out
@@ -22,7 +22,7 @@ local function start_term(split_cmd)
       if vim.fn.getbufinfo(args.buf)[1].hidden == 0 then
         vim.cmd "bwipeout"
       end
-    end
+    end,
   })
 end
 -- }}}
@@ -30,12 +30,22 @@ end
 -- {{{ Terminal starting
 wk.register({
   v = {
-    v = { function() start_term("vsplit") end, "Vertical terminal" }
+    v = {
+      function()
+        start_term "vsplit"
+      end,
+      "Vertical terminal",
+    },
   },
   h = {
-    h = { function() start_term("split") end, "Horizontal terminal" }
+    h = {
+      function()
+        start_term "split"
+      end,
+      "Horizontal terminal",
+    },
   },
-}, { prefix = '<leader>' })
+}, { prefix = "<leader>" })
 -- }}}
 
 -- {{{ Git
@@ -47,34 +57,42 @@ wk.register({
   d = { "<cmd>Telescope git_status<cr>", "Git diffs" },
   n = { "<cmd>Gitsigns next_hunk<cr>", "Next hunk" },
   p = { "<cmd>Gitsigns prev_hunk<cr>", "Prev hunk" },
-}, { prefix = '<leader>g' })
+}, { prefix = "<leader>g" })
 -- }}}
 
 -- {{{ Commenting
 wk.register({
-  ["/"] = { function() require("Comment.api").toggle.linewise.current() end, "Comment" }
-}, { prefix = '<leader>' })
+  ["/"] = {
+    function()
+      require("Comment.api").toggle.linewise.current()
+    end,
+    "Comment",
+  },
+}, { prefix = "<leader>" })
 
 wk.register({
-  ["/"] = { function()
-    -- From the Comment.nvim documentation
-    local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
-    vim.api.nvim_feedkeys(esc, 'nx', false)
-    require("Comment.api").toggle.linewise(vim.fn.visualmode())
-  end, "Comment" }
-}, { mode = { "v" }, prefix = '<leader>' })
+  ["/"] = {
+    function()
+      -- From the Comment.nvim documentation
+      local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+      vim.api.nvim_feedkeys(esc, "nx", false)
+      require("Comment.api").toggle.linewise(vim.fn.visualmode())
+    end,
+    "Comment",
+  },
+}, { mode = { "v" }, prefix = "<leader>" })
 -- }}}
 
 -- {{{ Toggles
 wk.register({
   name = "Toggles",
   s = { "<cmd>set spell!<cr>", "Toggle spellcheck" },
-}, { prefix = '<leader>t' })
+}, { prefix = "<leader>t" })
 ---}}}
 
 -- {{{ Telescope
-local tele = require("telescope")
-local telebuilt = require("telescope.builtin")
+local tele = require "telescope"
+local telebuilt = require "telescope.builtin"
 wk.register({
   name = "Telescope",
   f = { telebuilt.find_files, "Find files" },
@@ -87,7 +105,12 @@ wk.register({
   p = { telebuilt.oldfiles, "Previous files" },
   b = { telebuilt.buffers, "Open buffers" },
   j = { telebuilt.jumplist, "Jump list" },
-  o = { function() tele.extensions.project.project { display_type = 'full' } end, "Search projects" },
+  o = {
+    function()
+      tele.extensions.project.project { display_type = "full" }
+    end,
+    "Search projects",
+  },
   d = { vim.cmd.TodoTelescope, "Find TODOs" },
   ["/"] = { telebuilt.current_buffer_fuzzy_find, "Fuzzy find" },
 }, { prefix = "<leader>f" })
@@ -105,8 +128,8 @@ wk.register({
 
 -- {{{ LSP
 --  AutoCMD from lspconfig readme.md, hotkeys and such modified by me
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
     local opts = { buffer = ev.buf }
 
@@ -114,11 +137,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
       q = { vim.diagnostic.open_float, "Floating diagnostic" },
     }, { prefix = "<leader>" })
 
-    wk.register({
+    wk.register {
       ["]d"] = { vim.diagnostic.goto_next, "Next diagnostic" },
       ["[d"] = { vim.diagnostic.goto_prev, "Prev diagnostic" },
       K = { vim.lsp.buf.hover, "LSP Hover", opts },
-    })
+    }
 
     wk.register({
       name = "LSP",
@@ -129,13 +152,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
         name = "Workspace folders",
         a = { vim.lsp.buf.add_workspace_folder, "Add folder", opts },
         r = { vim.lsp.buf.remove_workspace_folder, "Remove folder", opts },
-        l = { function()
-          local str = ""
-          for i, v in ipairs(vim.lsp.buf.list_workspace_folders()) do
-            str = str .. i .. ". " .. v .. "\n"
-          end
-          print(str)
-        end, "List folders", opts },
+        l = {
+          function()
+            local str = ""
+            for i, v in ipairs(vim.lsp.buf.list_workspace_folders()) do
+              str = str .. i .. ". " .. v .. "\n"
+            end
+            print(str)
+          end,
+          "List folders",
+          opts,
+        },
       },
       s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document symbols", opts },
       S = { vim.lsp.buf.signature_help, "Signature help", opts },
@@ -145,46 +172,49 @@ vim.api.nvim_create_autocmd('LspAttach', {
       D = { vim.lsp.buf.declaration, "Declaration", opts },
       i = { vim.lsp.buf.implementation, "Implementation", opts },
       t = { vim.lsp.buf.type_definition, "Type definition", opts },
-      v = { require('telescope.builtin').diagnostics, "Diagnostics" },
-    }, { prefix = '<leader>l' })
+      v = { require("telescope.builtin").diagnostics, "Diagnostics" },
+    }, { prefix = "<leader>l" })
   end,
 })
 -- }}}
 
 -- {{{ Easy window movement with ctrl arrow
 wk.register({
-  ["<C-Up>"]= {"<C-w>k", "Go to the up window"},
-  ["<C-Down>"]= {"<C-w>j", "Go to the down window"},
-  ["<C-Left>"]= {"<C-w>h", "Go to the left window"},
-  ["<C-Right>"]= {"<C-w>l", "Go to the right window"},
+  ["<C-Up>"] = { "<C-w>k", "Go to the up window" },
+  ["<C-Down>"] = { "<C-w>j", "Go to the down window" },
+  ["<C-Left>"] = { "<C-w>h", "Go to the left window" },
+  ["<C-Right>"] = { "<C-w>l", "Go to the right window" },
 }, {})
 -- }}}
 
 -- {{{ Text moving
 wk.register({
-  ["<M-Down>"] = {":move '>+1<cr>gv=gv", "Move lines down"},
-  ["<M-Up>"] = {":move '<-2<cr>gv=gv", "Move lines up"},
-  ["<M-k>"] = {":move '<-2<cr>gv=gv", "which_key_ignore"},
-  ["<M-j>"] = {":move '>+1<cr>gv=gv", "which_key_ignore"},
-}, { mode = "v"})
+  ["<M-Down>"] = { ":move '>+1<cr>gv=gv", "Move lines down" },
+  ["<M-Up>"] = { ":move '<-2<cr>gv=gv", "Move lines up" },
+  ["<M-k>"] = { ":move '<-2<cr>gv=gv", "which_key_ignore" },
+  ["<M-j>"] = { ":move '>+1<cr>gv=gv", "which_key_ignore" },
+}, { mode = "v" })
 -- }}}
 
 -- {{{ Loose mappings
 wk.register({
   x = { "<cmd>Bdelete<cr>", "Delete buffer" },
-  e = { function()
-    -- Toggle or focus depending on if we're on it
-    local tree = require('nvim-tree.api').tree
-    if tree.is_tree_buf() then
-      tree.close_in_this_tab()
-    else
-      tree.focus()
-    end
-  end, "Toggle Nvim tree" },
-}, { prefix = '<leader>' })
+  e = {
+    function()
+      -- Toggle or focus depending on if we're on it
+      local tree = require("nvim-tree.api").tree
+      if tree.is_tree_buf() then
+        tree.close_in_this_tab()
+      else
+        tree.focus()
+      end
+    end,
+    "Toggle Nvim tree",
+  },
+}, { prefix = "<leader>" })
 
 wk.register({
   w = { "<cmd>WhichKey<cr>", "Open WhichKey" },
-}, { mode = { "n", "v" }, prefix = '<leader>' })
+}, { mode = { "n", "v" }, prefix = "<leader>" })
 
 -- }}}

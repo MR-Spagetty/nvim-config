@@ -1,5 +1,5 @@
 -- Needs to be set early, for nvim tree
-vim.g.loaded_netrw       = 1
+vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- ...
@@ -14,7 +14,7 @@ vim.o.scrolloff = 6
 
 -- Show dots for trailing spaces
 vim.o.list = true
-vim.opt.listchars:append({ trail = '•' })
+vim.opt.listchars:append { trail = "•" }
 
 -- Persistent undo
 vim.o.undofile = true

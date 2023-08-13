@@ -1,1 +1,1 @@
-require("myconfig")
+require "myconfig"
