@@ -3,7 +3,14 @@ local augroup = vim.api.nvim_create_augroup
 
 -- {{{ Terminals
 -- Go instantly into insert mode, ignore line numbers
-autocmd({ "TermOpen" }, { command = "setlocal nonumber | normal a" })
+autocmd({ "TermOpen" }, {
+  callback = function()
+    vim.o.number = false
+    vim.o.relativenumber = false
+    vim.o.signcolumn = "no"
+    vim.cmd.startinsert()
+  end,
+})
 -- }}}
 
 --- {{{ Toggle relative numbers
@@ -12,18 +19,18 @@ augroup("ToggleRNu", { clear = true })
 autocmd({ "InsertEnter" }, {
   -- command = "setlocal norelativenumber",
   callback = function()
-    if vim.wo.number then
-      vim.wo.relativenumber = false
+    if vim.o.number then
+      vim.o.relativenumber = false
     end
   end,
   group = "ToggleRNu",
 })
 autocmd({ "InsertLeave" }, {
   callback = function()
-    if vim.wo.number then
-      vim.wo.relativenumber = true
+    if vim.o.number then
+      vim.o.relativenumber = true
     end
-   end,
+  end,
   group = "ToggleRNu",
 })
 -- }}}
