@@ -76,7 +76,7 @@ efmls.setup {
   },
 
   lua = {
-    linter = getlint "luacheck",
+    -- linter = getlint "luacheck", not sure how to configure it for nvim
     formatter = getfmt "stylua",
   },
   java = {
