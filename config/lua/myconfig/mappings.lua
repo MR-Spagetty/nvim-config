@@ -105,6 +105,8 @@ wk.register({
   p = { telebuilt.oldfiles, "Previous files" },
   b = { telebuilt.buffers, "Open buffers" },
   j = { telebuilt.jumplist, "Jump list" },
+  h = { telebuilt.help_tags, "Help tags" },
+  m = { telebuilt.man_pages, "Man pages" },
   o = {
     function()
       tele.extensions.project.project { display_type = "full" }
