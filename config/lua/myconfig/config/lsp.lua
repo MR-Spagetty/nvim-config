@@ -22,7 +22,13 @@ require("neodev").setup()
 
 -- Do a default setup for all the stuff
 for _, server in ipairs(servers) do
-  lspconfig[server].setup(caps {})
+  lspconfig[server].setup(caps {
+    -- Disable formatting. efm should handle that.
+    on_attach = function(client)
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
+    end,
+  })
 end
 
 -- {{{ lua_ls
