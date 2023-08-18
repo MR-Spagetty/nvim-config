@@ -267,7 +267,8 @@ return require("packer").startup(function(use)
     end,
   }
 
-  use 'eandrju/cellular-automaton.nvim'
+  use "mfussenegger/nvim-jdtls"
+  use "eandrju/cellular-automaton.nvim"
   use "nvim-tree/nvim-web-devicons"
   use "tpope/vim-surround"
   use "tpope/vim-fugitive"

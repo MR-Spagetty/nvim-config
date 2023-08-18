@@ -2,10 +2,10 @@ local lspconfig = require "lspconfig"
 local coq = require "coq"
 local caps = coq.lsp_ensure_capabilities
 
+-- TODO: Move to lsp/init.lua, create .lua files for servers needing more config.
 local servers = {
   "lua_ls",
   "clangd",
-  "jdtls",
   "pyright",
 }
 
