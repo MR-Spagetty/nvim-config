@@ -37,3 +37,9 @@ vim.o.signcolumn = "yes:1"
 -- Highlight line number
 vim.o.cursorline = true
 vim.o.cursorlineopt = "number"
+
+-- Sync with selection clipboard
+vim.o.clipboard = "unnamed"
+
+-- Do case sensitive if any cases, not otherwise.
+vim.o.smartcase = true
