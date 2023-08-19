@@ -286,6 +286,14 @@ return require("packer").startup(function(use)
     },
   }
 
+  use {
+    "theHamsta/nvim-dap-virtual-text",
+    require = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("nvim-dap-virtual-text").setup()
+    end,
+  }
+
   use "mfussenegger/nvim-jdtls"
   use "eandrju/cellular-automaton.nvim"
   use "nvim-tree/nvim-web-devicons"
