@@ -267,6 +267,25 @@ return require("packer").startup(function(use)
     end,
   }
 
+  use {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require "myconfig.config.dap"
+    end,
+  }
+
+  use {
+    "mxsdev/nvim-dap-vscode-js",
+    requires = {
+      { "mfussenegger/nvim-dap" },
+      {
+        "microsoft/vscode-js-debug",
+        opt = true,
+        run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+      },
+    },
+  }
+
   use "mfussenegger/nvim-jdtls"
   use "eandrju/cellular-automaton.nvim"
   use "nvim-tree/nvim-web-devicons"
