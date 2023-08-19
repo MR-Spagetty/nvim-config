@@ -42,4 +42,5 @@ vim.o.cursorlineopt = "number"
 vim.o.clipboard = "unnamed"
 
 -- Do case sensitive if any cases, not otherwise.
+vim.o.ignorecase = true
 vim.o.smartcase = true
