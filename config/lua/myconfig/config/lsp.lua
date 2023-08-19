@@ -89,8 +89,13 @@ efmls.setup {
   json = {
     formatter = getfmt "clang_format",
   },
-
+  javascript = {
+    formatter = getfmt "prettier",
+  },
   typescript = {
+    formatter = getfmt "prettier",
+  },
+  html = {
     formatter = getfmt "prettier",
   }
 }
