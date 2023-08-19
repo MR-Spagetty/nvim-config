@@ -1,7 +1,9 @@
 local lspconfig = require "lspconfig"
-local coq = require "coq"
-local caps = coq.lsp_ensure_capabilities
 
+local cmp_caps = require('cmp_nvim_lsp').default_capabilities()
+local function caps(opts)
+  return vim.tbl_extend("keep", opts or {}, {capabilities = cmp_caps})
+end
 
 
 -- TODO: Move to lsp/init.lua, create .lua files for servers needing more config.
@@ -126,7 +128,7 @@ vim.diagnostic.config {
   float = {
     border = border,
   },
-  update_in_insert = true,
+  -- update_in_insert = true,
   virtual_text = {
     prefix = " ",
   },

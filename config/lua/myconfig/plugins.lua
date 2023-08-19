@@ -120,17 +120,27 @@ return require("packer").startup(function(use)
 
   -- {{{ Completion
   use {
-    "ms-jpq/coq_nvim",
-    branch = "coq",
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "onsails/lspkind.nvim",
+      {
+        "saadparwaiz1/cmp_luasnip",
+        requires = {
+          "L3MON4D3/LuaSnip",
+          requires = { "rafamadriz/friendly-snippets" },
+          config = function()
+            require("myconfig.config.luasnip")
+          end
+        },
+      },
+    },
     config = function()
-      require "myconfig.config.coq"
+      require "myconfig.config.cmp"
     end,
-  }
-
-  use {
-    "ms-jpq/coq.artifacts",
-    branch = "artifacts",
-    requires = "coq_nvim",
   }
   -- }}}
 
@@ -152,7 +162,7 @@ return require("packer").startup(function(use)
 
   use {
     "neovim/nvim-lspconfig",
-    after = { "mason-lspconfig.nvim", "coq_nvim" },
+    after = { "mason-lspconfig.nvim"},
     config = function()
       require "myconfig.config.lsp"
     end,
@@ -225,7 +235,9 @@ return require("packer").startup(function(use)
   use {
     "windwp/nvim-autopairs",
     config = function()
-      require("nvim-autopairs").setup {}
+      require("nvim-autopairs").setup {
+        fast_wrap = {}
+      }
     end,
   }
 
