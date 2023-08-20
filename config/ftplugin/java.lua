@@ -1,9 +1,21 @@
 -- Template from https://github.com/mfussenegger/nvim-jdtls
-local caps = require("coq").lsp_ensure_capabilities
+-- local caps = require("coq").lsp_ensure_capabilities
+
+local cmp_caps = require("cmp_nvim_lsp").default_capabilities()
+local function caps(opts)
+  return vim.tbl_deep_extend("keep", opts or {}, { capabilities = cmp_caps })
+end
+
+local root_dir = vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]
+
+if root_dir == nil then
+  vim.notify("No root dir. RIP.")
+  return
+end
 
 local config = {
   cmd = { "/usr/bin/jdtls" },
-  root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
+  root_dir = vim.fs.dirname(root_dir),
   settings = {
     java = caps {
       server_capabilities = {
