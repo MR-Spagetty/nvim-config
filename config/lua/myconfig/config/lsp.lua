@@ -13,6 +13,8 @@ local servers = {
   "pyright",
   "eslint",
   "tsserver",
+  "cssls",
+  "jsonls",
 }
 
 -- {{{ Mason
