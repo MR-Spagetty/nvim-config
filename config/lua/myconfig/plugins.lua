@@ -133,8 +133,8 @@ return require("packer").startup(function(use)
           "L3MON4D3/LuaSnip",
           requires = { "rafamadriz/friendly-snippets" },
           config = function()
-            require("myconfig.config.luasnip")
-          end
+            require "myconfig.config.luasnip"
+          end,
         },
       },
     },
@@ -162,7 +162,7 @@ return require("packer").startup(function(use)
 
   use {
     "neovim/nvim-lspconfig",
-    after = { "mason-lspconfig.nvim"},
+    after = { "mason-lspconfig.nvim" },
     config = function()
       require "myconfig.config.lsp"
     end,
@@ -239,7 +239,7 @@ return require("packer").startup(function(use)
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup {
-        fast_wrap = {}
+        fast_wrap = {},
       }
     end,
   }
@@ -305,7 +305,7 @@ return require("packer").startup(function(use)
     "theHamsta/nvim-dap-virtual-text",
     require = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" },
     config = function()
-      require("nvim-dap-virtual-text").setup()
+      require("nvim-dap-virtual-text").setup {}
     end,
   }
 
