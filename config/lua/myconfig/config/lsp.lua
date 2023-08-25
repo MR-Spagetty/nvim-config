@@ -1,10 +1,24 @@
 local lspconfig = require "lspconfig"
 
-local cmp_caps = require('cmp_nvim_lsp').default_capabilities()
+local cmp_caps = require("cmp_nvim_lsp").default_capabilities()
 local function caps(opts)
-  return vim.tbl_extend("keep", opts or {}, {capabilities = cmp_caps})
+  return vim.tbl_extend("keep", opts or {}, { capabilities = cmp_caps })
 end
 
+-- TODO: Move this and caps to lsp.utils
+local function default_attach()
+  return function(client)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+    if client.resolved_capabilities.document_highlight then
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        group = "lsp_document_highlight",
+        buffer = 0,
+        callback = vim.lsp.buf.document_highlight,
+      })
+    end
+  end
+end
 
 -- TODO: Move to lsp/init.lua, create .lua files for servers needing more config.
 local servers = {
@@ -32,10 +46,7 @@ require("neodev").setup()
 for _, server in ipairs(servers) do
   lspconfig[server].setup(caps {
     -- Disable formatting. efm should handle that.
-    on_attach = function(client)
-      client.server_capabilities.documentFormattingProvider = false
-      client.server_capabilities.documentRangeFormattingProvider = false
-    end,
+    on_attach = default_attach(),
   })
 end
 
@@ -50,22 +61,12 @@ lspconfig.lua_ls.setup(caps {
       },
     },
   },
+  on_attach = default_attach(),
 })
 -- }}}
 
 -- {{{ Efm languager server(s)
 -- Mostly taken from https://github.com/creativenull/efmls-configs-nvim
-local efmls = require "efmls-configs"
-local on_attach = nil
-efmls.init {
-  -- Your custom attach function
-  on_attach = on_attach,
-
-  -- Enable formatting provided by efm langserver
-  init_options = {
-    documentFormatting = true,
-  },
-}
 
 local function getlint(name)
   return require("efmls-configs.linters." .. name)
@@ -73,7 +74,7 @@ end
 local function getfmt(name)
   return require("efmls-configs.formatters." .. name)
 end
-efmls.setup {
+local languages = {
   cpp = {
     linter = getlint "cppcheck",
     formatter = getfmt "clang_format",
@@ -91,7 +92,7 @@ efmls.setup {
     formatter = getfmt "clang_format",
   },
   json = {
-    formatter = getfmt "clang_format",
+    formatter = getfmt "prettier",
   },
   javascript = {
     formatter = getfmt "prettier",
@@ -101,8 +102,21 @@ efmls.setup {
   },
   html = {
     formatter = getfmt "prettier",
-  }
+  },
 }
+
+local config = caps {
+  filetypes = vim.tbl_keys(languages),
+  settings = {
+    rootMarkers = { '.git/', '.rootmarker' },
+    languages = languages,
+  },
+  init_options = {
+    documentFormatting = true,
+    documentRangeFormatting = true,
+  },
+}
+lspconfig.efm.setup(config)
 -- }}}
 
 -- TODO: Move to custom file
@@ -161,11 +175,6 @@ vim.api.nvim_clear_autocmds {
   buffer = 0,
   group = "lsp_document_highlight",
 }
-vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-  group = "lsp_document_highlight",
-  buffer = 0,
-  callback = vim.lsp.buf.document_highlight,
-})
 vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
   group = "lsp_document_highlight",
   buffer = 0,
