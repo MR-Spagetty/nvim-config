@@ -41,6 +41,9 @@ local languages = {
   html = {
     getfmt "prettier",
   },
+  rust = {
+    getfmt "rustfmt",
+  },
 }
 
 return caps {
