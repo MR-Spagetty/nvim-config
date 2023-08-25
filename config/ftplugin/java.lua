@@ -6,6 +6,20 @@ local function caps(opts)
   return vim.tbl_deep_extend("keep", opts or {}, { capabilities = cmp_caps })
 end
 
+local function default_attach()
+  return function(client)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+    if client.resolved_capabilities.document_highlight then
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        group = "lsp_document_highlight",
+        buffer = 0,
+        callback = vim.lsp.buf.document_highlight,
+      })
+    end
+  end
+end
+
 local root_dir = vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]
 
 if root_dir == nil then
@@ -30,6 +44,8 @@ local config = {
           preferred = "fernflower",
         },
       },
+
+  on_attach = default_attach(),
     },
   },
 }
