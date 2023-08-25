@@ -205,6 +205,9 @@ return require("packer").startup(function(use)
     "numToStr/Comment.nvim",
     config = function()
       require("Comment").setup()
+
+      local ft = require "Comment.ft"
+      ft.processing = { "// %s", "/* %s */" }
     end,
   }
 
@@ -306,6 +309,7 @@ return require("packer").startup(function(use)
     end,
   }
 
+  use "sophacles/vim-processing"
   use "mfussenegger/nvim-jdtls"
   use "eandrju/cellular-automaton.nvim"
   use "nvim-tree/nvim-web-devicons"
