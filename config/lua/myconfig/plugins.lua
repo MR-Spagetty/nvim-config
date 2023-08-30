@@ -309,6 +309,8 @@ return require("packer").startup(function(use)
     end,
   }
 
+  use "chrisbra/csv.vim"
+  use "dpezto/gnuplot.vim"
   use "sophacles/vim-processing"
   use "mfussenegger/nvim-jdtls"
   use "eandrju/cellular-automaton.nvim"
