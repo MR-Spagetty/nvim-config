@@ -317,6 +317,7 @@ return require("packer").startup(function(use)
     end,
   }
 
+  use "AndrewRadev/bufferize.vim"
   use "chrisbra/csv.vim"
   use "dpezto/gnuplot.vim"
   use "sophacles/vim-processing"
