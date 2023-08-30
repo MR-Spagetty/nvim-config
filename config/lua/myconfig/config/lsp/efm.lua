@@ -48,6 +48,12 @@ local languages = {
   rust = {
     getfmt "rustfmt",
   },
+  sh = {
+    getfmt "shfmt",
+  },
+  bash = {
+    getfmt "shfmt",
+  },
 }
 
 return caps {
