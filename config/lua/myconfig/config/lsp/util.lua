@@ -1,7 +1,15 @@
 local M = {}
 local cmp_caps = require("cmp_nvim_lsp").default_capabilities()
 function M.caps(opts)
-  return vim.tbl_extend("keep", opts or {}, { capabilities = cmp_caps })
+  return vim.tbl_deep_extend("keep", opts or {}, {
+    capabilities = vim.tbl_deep_extend("keep", cmp_caps, {
+      offsetEncoding = { "utf-16" },
+      general = {
+        positionEncodings = { "utf-16" },
+      },
+    }),
+    offset_encoding = "utf-16",
+  })
 end
 
 function M.default_attach()
