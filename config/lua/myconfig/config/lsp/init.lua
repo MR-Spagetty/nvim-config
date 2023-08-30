@@ -5,10 +5,11 @@ local servers = {
   "lua_ls",
   "clangd",
   "pyright",
-  "eslint",
   "tsserver",
   "cssls",
   "jsonls",
+  "rust_analyzer",
+  "marksman",
 }
 
 -- {{{ Mason
