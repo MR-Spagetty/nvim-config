@@ -26,6 +26,9 @@ local languages = {
   java = {
     getfmt "clang_format",
   },
+  jsonc = {
+    getfmt "prettier",
+  },
   json = {
     getfmt "prettier",
   },
@@ -33,6 +36,7 @@ local languages = {
     getfmt "prettier",
   },
   typescript = {
+    getlint "eslint_d",
     getfmt "prettier",
   },
   markdown = {
