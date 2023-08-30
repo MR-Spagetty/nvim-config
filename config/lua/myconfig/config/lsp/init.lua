@@ -10,6 +10,7 @@ local servers = {
   "jsonls",
   "rust_analyzer",
   "marksman",
+  "bashls",
 }
 
 -- {{{ Mason
