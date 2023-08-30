@@ -31,7 +31,7 @@ require("lualine").setup {
           unknown = "!",
           lsp_is_off = "",
           ["efm"] = { "󰣖", color = "LspEfm" },
-          ["jdtls"] = { "", color = "LspJdtls" },
+          ["tsserver"] = { "󰛦", color = "LspTsserver" },
         },
         only_attached = true,
       },

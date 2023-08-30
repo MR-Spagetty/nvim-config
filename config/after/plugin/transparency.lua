@@ -14,4 +14,5 @@ end
 -- If the bg is not set, then it uses the default background which makes it inconsistent
 vim.api.nvim_set_hl(0, "LspJdtls", linebg { fg = "orange" })
 vim.api.nvim_set_hl(0, "LspEfm", linebg { fg = "MistyRose1" })
+vim.api.nvim_set_hl(0, "LspTsserver", linebg { fg = "SteelBlue" })
 
