@@ -309,6 +309,14 @@ return require("packer").startup(function(use)
     end,
   }
 
+  use {
+    "nvim-lualine/lualine.nvim",
+    requires = { { "nvim-tree/nvim-web-devicons", opt = true }, "dokwork/lualine-ex" },
+    config = function()
+      require "myconfig.config.lualine"
+    end,
+  }
+
   use "chrisbra/csv.vim"
   use "dpezto/gnuplot.vim"
   use "sophacles/vim-processing"
