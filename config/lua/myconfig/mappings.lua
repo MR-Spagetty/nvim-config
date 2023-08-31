@@ -235,6 +235,12 @@ wk.register({
   ["<M-k>"] = { ":move '<-2<cr>gv=gv", "which_key_ignore" },
   ["<M-j>"] = { ":move '>+1<cr>gv=gv", "which_key_ignore" },
 }, { mode = "v" })
+wk.register({
+  ["<M-Down>"] = { "V:move '>+1<cr>gv=gv", "Move lines down" },
+  ["<M-Up>"] = { "V:move '<-2<cr>gv=gv", "Move lines up" },
+  ["<M-k>"] = { "V:move '<-2<cr>gv=gv", "which_key_ignore" },
+  ["<M-j>"] = { "V:move '>+1<cr>gv=gv", "which_key_ignore" },
+}, { mode = "n" })
 -- }}}
 
 -- {{{ Loose mappings
