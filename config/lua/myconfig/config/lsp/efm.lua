@@ -54,6 +54,10 @@ local languages = {
   bash = {
     getfmt "shfmt",
   },
+  python = {
+    getlint "flake8",
+    getfmt "autopep8",
+  },
 }
 
 return caps {
