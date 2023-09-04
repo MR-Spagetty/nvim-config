@@ -11,6 +11,9 @@ cmd("LG", "tabnew term://lazygit | setlocal nobuflisted bufhidden=wipe", {})
 -- Quick n Easy
 cmd("TT", "TransparentToggle", {})
 
+-- I CAN'T STOP DOING THIS AAAGHGHGHB
+cmd("W", "w", {})
+
 -- {{{ Telescope symbols
 cmd("Kaomoji", function()
   require("telescope.builtin").symbols { sources = { "kaomoji" } }
