@@ -32,6 +32,7 @@ require("lualine").setup {
           lsp_is_off = "",
           ["efm"] = { "󰣖", color = "LspEfm" },
           ["tsserver"] = { "󰛦", color = "LspTsserver" },
+          ["pyright"] = { "", color = "LspPyright" },
         },
         only_attached = true,
       },
