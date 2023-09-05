@@ -8,8 +8,21 @@ end
 
 local root_dir = vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]
 
+-- Start the basic one when without a root dir.
+-- nvim-jdtls starts scanning the whole folder or something. This is usually my
+-- home folderwhich slows everything down and spins up my CPU to 100%
 if root_dir == nil then
-  vim.notify("No root dir. RIP.")
+  require("lspconfig").jdtls.setup(caps {})
+  -- This is kinda cursed but lspconfig setups an autocommand,
+  -- so it needs to be triggered again.
+  -- The global stops infinite recursion.
+  if not vim.g.jdtls_reedit_single_file then
+    vim.notify "No root dir. RIP."
+    vim.g.jdtls_reedit_single_file = 1
+    vim.cmd [[edit!]]
+  else
+    vim.g.jdtls_reedit_single_file = nil
+  end
   return
 end
 
