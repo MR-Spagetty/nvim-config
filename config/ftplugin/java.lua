@@ -13,22 +13,21 @@ if root_dir == nil then
   return
 end
 
+-- NOTE: Install openjdk-src to get good docs when hovering
 local config = {
   cmd = { "/usr/bin/jdtls" },
   root_dir = vim.fs.dirname(root_dir),
-  settings = {
-    java = caps {
-      server_capabilities = {
-        documentFormattingProvider = false,
-        documentRangeFormattingProvider = false,
+  settings = caps {
+    server_capabilities = {
+      documentFormattingProvider = false,
+      documentRangeFormattingProvider = false,
+    },
+    java = {
+      signatureHelp = {
+        enabled = true,
       },
-      {
-        signatureHelp = {
-          enabled = true,
-        },
-        contentProvider = {
-          preferred = "fernflower",
-        },
+      contentProvider = {
+        preferred = "fernflower",
       },
     },
   },
