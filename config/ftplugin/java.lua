@@ -6,13 +6,18 @@ local function caps(opts)
   return vim.tbl_deep_extend("keep", opts or {}, { capabilities = cmp_caps })
 end
 
+local function on_attach(client)
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
+end
+
 local root_dir = vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]
 
 -- Start the basic one when without a root dir.
 -- nvim-jdtls starts scanning the whole folder or something. This is usually my
 -- home folderwhich slows everything down and spins up my CPU to 100%
 if root_dir == nil then
-  require("lspconfig").jdtls.setup(caps {})
+  require("lspconfig").jdtls.setup(caps { on_attach = on_attach })
   -- This is kinda cursed but lspconfig setups an autocommand,
   -- so it needs to be triggered again.
   -- The global stops infinite recursion.
@@ -30,11 +35,8 @@ end
 local config = {
   cmd = { "/usr/bin/jdtls" },
   root_dir = vim.fs.dirname(root_dir),
+  on_attach = on_attach,
   settings = caps {
-    server_capabilities = {
-      documentFormattingProvider = false,
-      documentRangeFormattingProvider = false,
-    },
     java = {
       signatureHelp = {
         enabled = true,
