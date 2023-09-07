@@ -46,11 +46,11 @@ return require("packer").startup(function(use)
     end,
   }
   -- }}}
-  -- {{{ Nightfox
+  -- {{{ Tokyonight
   use {
-    "EdenEast/nightfox.nvim",
+    "folke/tokyonight.nvim",
     config = function()
-      require("nightfox").setup {
+      require("tokyonight").setup {
         transparent = vim.g.transparent_enabled or false,
       }
     end,
