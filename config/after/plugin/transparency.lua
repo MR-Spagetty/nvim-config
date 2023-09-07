@@ -1,4 +1,6 @@
--- Need to set this here so it loads after kanagawa is set up
--- This avoids the flash when transparent
-vim.cmd "colorscheme catppuccin-mocha"
+-- Change theme after transparency is loaded to avoid a flash
+local colorpath = vim.fn.stdpath "data" .. "/colorscheme.vim"
 
+if vim.fn.glob(colorpath) ~= "" then
+  vim.cmd.source(colorpath)
+end

@@ -62,3 +62,15 @@ autocmd({ "ColorScheme" }, {
   end,
 })
 -- }}}
+
+-- {{{ Persistent colourscheme
+augroup("SaveColorScheme", { clear = true })
+autocmd("ColorScheme", {
+  group = "SaveColorScheme",
+  callback = function()
+    local colorpath = vim.fn.stdpath "data" .. "/colorscheme.vim"
+
+    vim.fn.writefile({ "colorscheme " .. vim.g.colors_name }, colorpath)
+  end,
+})
+-- }}}
