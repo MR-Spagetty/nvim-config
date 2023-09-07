@@ -35,9 +35,8 @@ autocmd({ "InsertLeave" }, {
 })
 -- }}}
 
--- {{{ File specific
 -- {{{ Java makeprg gradle || java
-vim.api.nvim_create_autocmd({ "FileType" }, {
+autocmd({ "FileType" }, {
   pattern = "java",
   callback = function()
     if vim.fn.filereadable "build.gradle" == 1 then
@@ -47,11 +46,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     end
   end,
 })
+-- }}}
 
----- For lualine > ex.lsp
+-- {{{ Update lualine lsp icon colours
+-- For lualine > ex.lsp
 -- Check https://codeyarns.com/tech/2011-07-29-vim-chart-of-color-names.html for colors.
 -- If the bg is not set, then it uses the default background which makes it inconsistent
-vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+autocmd({ "ColorScheme" }, {
   callback = function()
     local default = vim.api.nvim_get_hl(0, { name = "StatusLineNC" })
     vim.api.nvim_set_hl(0, "LspJdtls", { fg = "orange", bg = default.bg })
@@ -60,3 +61,4 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
     vim.api.nvim_set_hl(0, "LspPyright", { fg = "gold1", bg = default.bg })
   end,
 })
+-- }}}
