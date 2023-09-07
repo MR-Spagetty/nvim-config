@@ -63,6 +63,11 @@ return require("packer").startup(function(use)
     config = function()
       require("catppuccin").setup {
         transparent_background = vim.g.transparent_enabled or false,
+        color_overrides = {
+          mocha = {
+            base = "#110f0b",
+          },
+        },
       }
     end,
   }
