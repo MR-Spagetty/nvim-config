@@ -51,3 +51,7 @@ vim.o.conceallevel = 2
 -- Disable intro message
 -- I like it, but some plugin (probably lualine) redraws the screen which makes it flicker.
 vim.opt.shortmess:append("I")
+
+-- Hide mode
+-- Lualine shows the mode, so it's redundant
+vim.o.showmode = false
