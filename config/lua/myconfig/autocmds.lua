@@ -47,22 +47,16 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     end
   end,
 })
--- }}}
---[[ TODO: Add processing extension
--- {{{ Processing LSP
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = "processing",
-  callback = function()
-    -- Start the LSP
-    vim.lsp.start {
-      name = "processing-lsp",
-      cmd = { "/usr/share/processing/processing-lsp" },
-      root_dir = vim.fs.dirname(vim.fs.find(function(name)
-        return name:match ".*%.pde$"
-      end, { type = "file" })[0]),
-    }
 
+---- For lualine > ex.lsp
+-- Check https://codeyarns.com/tech/2011-07-29-vim-chart-of-color-names.html for colors.
+-- If the bg is not set, then it uses the default background which makes it inconsistent
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+  callback = function()
+    local default = vim.api.nvim_get_hl(0, { name = "StatusLineNC" })
+    vim.api.nvim_set_hl(0, "LspJdtls", { fg = "orange", bg = default.bg })
+    vim.api.nvim_set_hl(0, "LspEfm", { fg = "MistyRose1", bg = default.bg })
+    vim.api.nvim_set_hl(0, "LspTsserver", { fg = "SteelBlue", bg = default.bg })
+    vim.api.nvim_set_hl(0, "LspPyright", { fg = "gold1", bg = default.bg })
   end,
 })
--- }}} ]]
--- }}}
