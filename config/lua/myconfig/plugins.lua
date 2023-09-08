@@ -286,61 +286,11 @@ return require("packer").startup(function(use)
       }
     end,
   }
-
-  use {
-    "mfussenegger/nvim-dap",
-    config = function()
-      require "myconfig.config.dap"
-    end,
-  }
-
-  use {
-    "mxsdev/nvim-dap-vscode-js",
-    requires = {
-      { "mfussenegger/nvim-dap" },
-      {
-        "microsoft/vscode-js-debug",
-        opt = true,
-        run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv -f dist out",
-      },
-    },
-  }
-
-  use {
-    "theHamsta/nvim-dap-virtual-text",
-    require = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("nvim-dap-virtual-text").setup {}
-    end,
-  }
-
   use {
     "nvim-lualine/lualine.nvim",
     requires = { { "nvim-tree/nvim-web-devicons", opt = true }, "dokwork/lualine-ex" },
     config = function()
       require "myconfig.config.lualine"
-    end,
-  }
-
-  use {
-    "m4xshen/hardtime.nvim",
-    requires = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    config = function()
-      require("hardtime").setup {
-        disabled_filetypes = { "qf", "netrw", "NvimTree", "lazy", "mason", "fugitive" },
-        restricted_keys = {
-          ["h"] = {},
-          ["j"] = {},
-          ["k"] = {},
-          ["l"] = {},
-        },
-        disabled_keys = {
-          ["<Up>"] = { "n" },
-          ["<Down>"] = { "n" },
-          ["<Left>"] = { "n" },
-          ["<Right>"] = { "n" },
-        },
-      }
     end,
   }
 

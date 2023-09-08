@@ -130,37 +130,6 @@ wk.register({
 }, { prefix = "<leader>h" })
 -- }}} ]]
 
--- {{{ DAP
--- Check :help dap-api
-wk.register({
-  name = "Debugging",
-  b = { require("dap").toggle_breakpoint, "Toggle Breakpoint" },
-  B = {
-    function()
-      require("dap").list_breakpoints(true)
-    end,
-    "List breakpoints",
-  },
-  e = { require("dap").set_exception_breakpoints, "Set exception breakpoints" },
-  D = { require("dap").clear_breakpoints, "Clear breakpoints" },
-  c = { require("dap").continue, "Continue" },
-  s = { require("dap").step_over, "Step" },
-  i = { require("dap").step_into, "Step in" },
-  o = { require("dap").step_out, "Step out" },
-  r = { require("dap").repl.toggle, "Toggle REPL" },
-  h = { require("dap").run_to_cursor, "Run to cursor" },
-  ["<Up>"] = { require("dap").up, "Stacktrace up" },
-  ["<Down>"] = { require("dap").down, "Stacktrace down" },
-  k = {
-    function()
-      require("dap").disconnect()
-      require("dap").close()
-    end,
-    "Stop debugging",
-  },
-}, { prefix = "<leader>d" })
--- }}}
-
 -- {{{ LSP
 --  AutoCMD from lspconfig readme.md, hotkeys and such modified by me
 vim.api.nvim_create_autocmd("LspAttach", {

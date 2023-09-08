@@ -5,10 +5,7 @@ local servers = {
   "lua_ls",
   "clangd",
   "pyright",
-  "tsserver",
-  "cssls",
   "jsonls",
-  "rust_analyzer",
   "marksman",
   "bashls",
 }
