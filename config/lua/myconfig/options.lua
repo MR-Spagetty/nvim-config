@@ -12,16 +12,20 @@ vim.o.splitright = true
 vim.o.number = true
 vim.o.scrolloff = 6
 
--- Show dots for trailing spaces
 vim.o.list = true
-vim.opt.listchars:append { trail = "•" }
+vim.opt.listchars:append({
+  -- Show dots for trailing spaces
+  trail = "•",
+  -- Show "tab" for tabs
+  tab = "tab",
+})
 
 -- Persistent undo
 vim.o.undofile = true
 
 -- Tab key stuff
 vim.o.shiftwidth = 2
-vim.o.tabstop = 2
+vim.o.tabstop = 3
 vim.o.softtabstop = 2
 vim.o.expandtab = true
 

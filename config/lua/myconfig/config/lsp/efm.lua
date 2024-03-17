@@ -11,56 +11,56 @@ end
 
 local languages = {
   cpp = {
-    getlint "cppcheck",
-    getfmt "clang_format",
+    getlint("cppcheck"),
+    require("myconfig.config.lsp.clang_format"),
   },
   c = {
-    getlint "cppcheck",
-    getfmt "clang_format",
+    getlint("cppcheck"),
+    require("myconfig.config.lsp.clang_format"),
   },
 
   lua = {
     -- linter = getlint "luacheck", not sure how to configure it for nvim
-    getfmt "stylua",
+    getfmt("stylua"),
   },
   java = {
-    getfmt "clang_format",
+    require("myconfig.config.lsp.clang_format"),
   },
   jsonc = {
-    getfmt "prettier",
+    getfmt("prettier"),
   },
   json = {
-    getfmt "prettier",
+    getfmt("prettier"),
   },
   javascript = {
-    getfmt "prettier",
+    getfmt("prettier"),
   },
   typescript = {
-    getlint "eslint_d",
-    getfmt "prettier",
+    getlint("eslint_d"),
+    getfmt("prettier"),
   },
   markdown = {
-    getfmt "prettier",
+    getfmt("prettier"),
   },
   html = {
-    getfmt "prettier",
+    getfmt("prettier"),
   },
   rust = {
-    getfmt "rustfmt",
+    getfmt("rustfmt"),
   },
   sh = {
-    getfmt "shfmt",
+    getfmt("shfmt"),
   },
   bash = {
-    getfmt "shfmt",
+    getfmt("shfmt"),
   },
   python = {
-    getlint "flake8",
-    getfmt "autopep8",
+    getlint("flake8"),
+    getfmt("autopep8"),
   },
 }
 
-return caps {
+return caps({
   filetypes = vim.tbl_keys(languages),
   settings = {
     rootMarkers = { ".git/", ".rootmarker" },
@@ -70,4 +70,5 @@ return caps {
     documentFormatting = true,
     documentRangeFormatting = true,
   },
-}
+})
+

@@ -301,6 +301,13 @@ return require("packer").startup(function(use)
     end,
   }
 
+  use {
+    "RaafatTurki/hex.nvim",
+    config = function()
+      require("hex").setup()
+    end,
+  }
+
   use "preservim/vim-markdown"
   use "AndrewRadev/bufferize.vim"
   use "chrisbra/csv.vim"

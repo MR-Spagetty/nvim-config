@@ -33,7 +33,7 @@ end
 
 -- NOTE: Install openjdk-src to get good docs when hovering
 local config = {
-  cmd = { "/usr/bin/jdtls" },
+  cmd = { "jdtls" },
   root_dir = vim.fs.dirname(root_dir),
   on_attach = on_attach,
   settings = caps {
