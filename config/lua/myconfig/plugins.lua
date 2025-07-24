@@ -1,27 +1,28 @@
 -- Bootstrap lazy.nvim (from the README)
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  vim.fn.system {
+  vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable", -- latest stable release
     lazypath,
-  }
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- Actual plugins:
 local plugins = {
 
+  { "akinsho/git-conflict.nvim", lazy = false, version = "*", config = true },
   -- Tree sitter my beloved
   {
     "nvim-treesitter/nvim-treesitter",
     event = "VeryLazy",
     build = ":TSUpdate",
     config = function()
-      require "myconfig.config.treesitter"
+      require("myconfig.config.treesitter")
     end,
   },
 
@@ -101,7 +102,7 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = { "<leader>f", "<leader>l" },
     config = function()
-      require "myconfig.config.telescope"
+      require("myconfig.config.telescope")
     end,
   },
 
@@ -113,20 +114,20 @@ local plugins = {
       local cmd = vim.api.nvim_create_user_command
 
       cmd("Kaomoji", function()
-        require("telescope.builtin").symbols { sources = { "kaomoji" } }
+        require("telescope.builtin").symbols({ sources = { "kaomoji" } })
       end, {})
       cmd("Emoji", function()
-        require("telescope.builtin").symbols { sources = { "emoji" } }
+        require("telescope.builtin").symbols({ sources = { "emoji" } })
       end, {})
       cmd("MathUnicode", function()
-        require("telescope.builtin").symbols { sources = { "math" } }
+        require("telescope.builtin").symbols({ sources = { "math" } })
       end, {})
       cmd("MathLatex", function()
-        require("telescope.builtin").symbols { sources = { "latex" } }
+        require("telescope.builtin").symbols({ sources = { "latex" } })
       end, {})
 
       cmd("Nerd", function()
-        require("telescope.builtin").symbols { sources = { "nerd" } }
+        require("telescope.builtin").symbols({ sources = { "nerd" } })
       end, {})
     end,
     cmd = { "Emoji", "MathLatex", "MathUnicode", "Kaomoji", "Nerd" },
@@ -145,7 +146,7 @@ local plugins = {
 
   {
     "LintaoAmons/cd-project.nvim",
-    opts = require "myconfig.config.cdproject",
+    opts = require("myconfig.config.cdproject"),
     dependencies = { "nvim-telescope/telescope.nvim" },
   },
 
@@ -156,7 +157,7 @@ local plugins = {
   },
   {
     "nvim-telescope/telescope-project.nvim",
-    dependencies = {"nvim-telescope/telescope.nvim", "nvim-telescope/telescope-file-browser.nvim"}
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-telescope/telescope-file-browser.nvim" },
   },
 
   {
@@ -182,12 +183,12 @@ local plugins = {
       },
     },
     config = function()
-      require "myconfig.config.cmp"
+      require("myconfig.config.cmp")
     end,
     event = "InsertEnter",
   },
 
-  { "folke/neodev.nvim",          opts = {} },
+  { "folke/neodev.nvim", opts = {} },
 
   {
     "williamboman/mason-lspconfig.nvim",
@@ -198,7 +199,7 @@ local plugins = {
     -- TODO: Steal LazyFile from lazyvim
     event = { "BufReadPost", "BufWritePost", "BufNewFile" },
     config = function()
-      require "myconfig.config.lsp"
+      require("myconfig.config.lsp")
     end,
   },
 
@@ -207,9 +208,9 @@ local plugins = {
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
-      require("which-key").setup {
+      require("which-key").setup({
         triggers_nowait = { "z=" },
-      }
+      })
     end,
   },
 
@@ -226,7 +227,7 @@ local plugins = {
   {
     "numToStr/Comment.nvim",
     config = function()
-      local ft = require "Comment.ft"
+      local ft = require("Comment.ft")
       ft.processing = { "// %s", "/* %s */" }
     end,
   },
@@ -245,7 +246,7 @@ local plugins = {
   },
 
   -- Delete buffers without messing things up
-  { "famiu/bufdelete.nvim",              cmd = "Bdelete" },
+  { "famiu/bufdelete.nvim", cmd = "Bdelete" },
 
   {
     "stevearc/oil.nvim",
@@ -288,7 +289,7 @@ local plugins = {
         return
       end
 
-      local c = require "colorizer"
+      local c = require("colorizer")
       c.setup(opts)
 
       -- The following snippet is from gregorias.
@@ -348,7 +349,7 @@ local plugins = {
     lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons", "dokwork/lualine-ex" },
     config = function()
-      require "myconfig.config.lualine"
+      require("myconfig.config.lualine")
     end,
   },
   {
@@ -395,7 +396,7 @@ local plugins = {
     "sophacles/vim-processing",
     config = function()
       -- The processing extension adds this highlight but it conflicts with my todo extension and makes stuff unreadable
-      vim.cmd [[hi Todo guibg=None guifg=None]]
+      vim.cmd([[hi Todo guibg=None guifg=None]])
     end,
     event = "VeryLazy",
   },
@@ -411,7 +412,7 @@ local plugins = {
     },
 
     config = function()
-      require "myconfig.config.neotest"
+      require("myconfig.config.neotest")
     end,
 
     keys = "<leader>r",
@@ -466,11 +467,11 @@ local plugins = {
                 timer:stop()
                 timer:close()
 
-                local wk = require "which-key"
+                local wk = require("which-key")
                 wk.register({
                   a = {
                     function()
-                      vim.cmd.RustLsp "codeAction"
+                      vim.cmd.RustLsp("codeAction")
                     end,
                     "Code Action",
                   },
@@ -481,37 +482,37 @@ local plugins = {
                   name = "RustLsp",
                   d = {
                     function()
-                      vim.cmd.RustLsp "debuggables"
+                      vim.cmd.RustLsp("debuggables")
                     end,
                     "Debuggables",
                   },
                   e = {
                     function()
-                      vim.cmd.RustLsp "explainError"
+                      vim.cmd.RustLsp("explainError")
                     end,
                     "Explain error",
                   },
                   j = {
                     function()
-                      vim.cmd.RustLsp "joinLines"
+                      vim.cmd.RustLsp("joinLines")
                     end,
                     "Join lines",
                   },
                   m = {
                     function()
-                      vim.cmd.RustLsp "expandMacro"
+                      vim.cmd.RustLsp("expandMacro")
                     end,
                     "Expand macro",
                   },
                   r = {
                     function()
-                      vim.cmd.RustLsp "runnables"
+                      vim.cmd.RustLsp("runnables")
                     end,
                     "Runnables",
                   },
                   s = {
                     function()
-                      vim.cmd.RustLsp "renderDiagnostic"
+                      vim.cmd.RustLsp("renderDiagnostic")
                     end,
                     "Render diagnostic",
                   },
@@ -521,7 +522,7 @@ local plugins = {
                 wk.register({
                   K = {
                     function()
-                      vim.cmd.RustLsp { "hover", "actions" }
+                      vim.cmd.RustLsp({ "hover", "actions" })
                     end,
                     "LSP Hover",
                   },
@@ -530,7 +531,7 @@ local plugins = {
                 wk.register({
                   K = {
                     function()
-                      vim.cmd.RustLsp { "hover", "range" }
+                      vim.cmd.RustLsp({ "hover", "range" })
                     end,
                     "LSP Hover",
                   },
@@ -544,27 +545,34 @@ local plugins = {
     ft = { "rust" },
   },
 
-  { "tpope/vim-fugitive",                cmd = "Git" },
-  { "danymat/neogen",                    opts = {},                keys = "<leader>lg" },
-  { "mbbill/undotree",                   event = "VeryLazy" },
-  { "chrisbra/csv.vim",                  ft = "csv" },
-  { "dpezto/gnuplot.vim",                event = "VeryLazy" },
-  { "elixir-editors/vim-elixir",         event = "VeryLazy" },
+  { "tpope/vim-fugitive", cmd = "Git" },
+  { "danymat/neogen", opts = {}, keys = "<leader>lg" },
+  { "mbbill/undotree", event = "VeryLazy" },
+  { "chrisbra/csv.vim", ft = "csv" },
+  { "dpezto/gnuplot.vim", event = "VeryLazy" },
+  { "elixir-editors/vim-elixir", event = "VeryLazy" },
   { "Hoffs/omnisharp-extended-lsp.nvim", ft = "cs" },
-  { "AndrewRadev/bufferize.vim",         cmd = "Bufferize" },
-  { "eandrju/cellular-automaton.nvim",   cmd = "CellularAutomaton" },
+  { "AndrewRadev/bufferize.vim", cmd = "Bufferize" },
+  { "eandrju/cellular-automaton.nvim", cmd = "CellularAutomaton" },
   { "nvim-tree/nvim-web-devicons" },
 
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
-    cmd="Neotree",
+    cmd = "Neotree",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
-      "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
-    }
+      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    },
+  },
+  {
+    'sophieforrest/processing.nvim',
+    -- This plugin is already lazy-loaded.
+    lazy = false,
+    -- Recommended.
+    version = "^1",
   },
 }
 
