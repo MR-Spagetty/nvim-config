@@ -120,23 +120,12 @@ wk.add({
 })
 -- }}}
 
---[[ -- {{{ Harpoon
-wk.register({
-  name = "Harpoon",
-  a = { require("harpoon.mark").add_file, "Add file" },
-  m = { require("harpoon.ui").toggle_quick_menu, "Toggle menu" },
-  n = { require("harpoon.ui").nav_next(), "Next file" },
-  p = { require("harpoon.ui").nav_prev(), "Prev file" },
-}, { prefix = "<leader>h" })
--- }}} ]]
-
 -- {{{ LSP
 --  AutoCMD from lspconfig readme.md, hotkeys and such modified by me
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
     local opts = { buffer = ev.buf }
-
     wk.add({
       { "<leader>q", vim.diagnostic.open_float, desc = "Floating diagnostic" },
     })
