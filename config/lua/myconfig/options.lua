@@ -43,7 +43,7 @@ vim.o.cursorline = true
 vim.o.cursorlineopt = "number"
 
 -- Sync with selection clipboard
-vim.o.clipboard = "unnamed"
+vim.opt.clipboard = "unnamedplus"
 
 -- Do case sensitive if any cases, not otherwise.
 vim.o.ignorecase = true
