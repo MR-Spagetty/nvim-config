@@ -98,7 +98,7 @@ local plugins = {
 
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.6",
+    version="*",
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = { "<leader>f", "<leader>l" },
     config = function()
@@ -187,9 +187,17 @@ local plugins = {
     end,
     event = "InsertEnter",
   },
-
-  { "folke/neodev.nvim", opts = {} },
-
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
@@ -209,7 +217,7 @@ local plugins = {
       vim.o.timeout = true
       vim.o.timeoutlen = 300
       require("which-key").setup({
-        triggers_nowait = { "z=" },
+        delay = 0,
       })
     end,
   },
@@ -324,10 +332,6 @@ local plugins = {
       {
         "microsoft/java-debug",
         build = "./mvnw clean install",
-      },
-      {
-        "microsoft/vscode-java-test",
-        build = "npm install && npm run build-plugin",
       },
 
       {
@@ -445,7 +449,7 @@ local plugins = {
 
   {
     "mrcjkb/rustaceanvim",
-    version = "^4",
+    version = "*",
     init = function()
       ---@type RustaceanOpts
       vim.g.rustaceanvim = {
