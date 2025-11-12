@@ -43,7 +43,7 @@ vim.o.cursorline = true
 vim.o.cursorlineopt = "number"
 
 -- Sync with selection clipboard
-vim.o.clipboard = "unnamed"
+vim.opt.clipboard = "unnamedplus"
 
 -- Do case sensitive if any cases, not otherwise.
 vim.o.ignorecase = true
@@ -59,3 +59,16 @@ vim.opt.shortmess:append("I")
 -- Hide mode
 -- Lualine shows the mode, so it's redundant
 vim.o.showmode = false
+
+
+vim.g.processing_nvim = {
+    highlight = {
+      -- Whether to enable treesitter highlighting.
+        ---@type boolean
+        enable = true,
+    },
+    -- lsp = {
+    --   cmd = {"processing", "lsp"}
+    -- --   -- Example: cmd = { "processing-lsp" }
+    -- },
+}

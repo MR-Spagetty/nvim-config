@@ -14,15 +14,22 @@ end
 
 function M.default_attach()
   return function(client)
+    vim.lsp.inlay_hint.enable()
+
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
 
-    -- TODO: Check why it's not doing anything
-    if client.resolved_capabilities.document_highlight then
+    if vim.documentHighlightprovider then
       vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
         group = "lsp_document_highlight",
         buffer = 0,
         callback = vim.lsp.buf.document_highlight,
+      })
+
+      vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+        group = "lsp_document_highlight",
+        buffer = 0,
+        callback = vim.lsp.buf.clear_references,
       })
     end
   end

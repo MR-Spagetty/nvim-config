@@ -19,7 +19,7 @@ require("mason-lspconfig").setup {
 --- }}}
 
 -- Get neat stuff for nvim config
-require("neodev").setup()
+require("lazydev").setup()
 
 -- Do a default setup for all the stuff
 for _, server in ipairs(servers) do
