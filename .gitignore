@@ -3,3 +3,4 @@ nvim.sh
 .local/*
 .config/*
 config/plugin
+config/lazy-lock.json
